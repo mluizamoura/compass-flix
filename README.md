@@ -53,7 +53,7 @@ npx react-native run-android
  
 ## Status do Projeto
  
-O projeto seguirá com algumas entregas durante as etapas em que se realizam as sprints. No momento segue como status o desenvolvimento das telas iniciais.
+O projeto seguirá com algumas entregas durante as etapas em que se realizam as sprints. No momento segue como status o desenvolvimento das telas iniciais
 
 ## License
-@Alguns direitos reservados.
+@Alguns direitos reservados
