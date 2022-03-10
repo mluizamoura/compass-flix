@@ -1,0 +1,18 @@
+{
+  "files.exclude": {
+    "node_modules": true,
+    ".gitignore": true,
+    "public": true,
+    ".bundle": true,
+    ".buckconfig": true,
+    "__tests__": true,
+    // "*js": true,
+    ".flowconfig": true,
+    ".ruby-version": true,
+    ".watchmanconfig": true,
+    "*lock": true,
+    "Gemfile": true,
+    "android": true,
+    "ios": true
+  }
+}
