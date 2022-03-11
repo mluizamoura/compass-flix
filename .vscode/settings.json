@@ -6,7 +6,7 @@
     ".bundle": true,
     ".buckconfig": true,
     "__tests__": true,
-    "*js": true,
+    "*js": false,
     ".flowconfig": true,
     ".ruby-version": true,
     ".watchmanconfig": true,
