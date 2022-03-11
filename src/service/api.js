@@ -26,4 +26,16 @@ export async function getTolken() {
   }
 }
 
+export async function validateTolken(user) {
+  try {
+    const {data} = await api.post(
+      'authentication/token/validate_with_login?api_key=c3dc5cb91b1c309207a60a76c5742842',
+      user,
+    );
+    console.warn(data);
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
 export default api;
