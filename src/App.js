@@ -5,7 +5,7 @@ import Home from './pages/Home';
 function App() {
   return (
     <View>
-      <Text>Compass</Text>
+      <Text>Compass Flix</Text>
     </View>
   );
 }
