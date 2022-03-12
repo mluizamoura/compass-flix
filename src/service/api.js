@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {Alert} from 'react-native';
 
 const api = axios.create({
   baseURL: 'https://api.themoviedb.org/3/',
@@ -33,7 +34,7 @@ export async function approveRequestToken(tolken) {
     );
     return data;
   } catch (error) {
-    console.warn(error);
+    console.log(error);
   }
 }
 
@@ -51,7 +52,12 @@ export async function validateToken(body) {
     );
     return data.success;
   } catch (error) {
-    console.warn(error);
+    if (error.response.data.status_message.includes('You must provide')) {
+      Alert.alert('Usuário inválido', 'Campo não preenchido.');
+    } else {
+      Alert.alert('Usuário inválido', 'Nome ou senha inválidos.');
+    }
+    return error.response.data.success;
   }
 }
 
@@ -67,7 +73,7 @@ export async function getAccessToken(token) {
       },
     );
   } catch (error) {
-    console.warn(error);
+    console.log(error);
   }
 }
 

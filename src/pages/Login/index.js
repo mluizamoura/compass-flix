@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   TextInput,
   AsyncStorage,
+  Alert,
   Keyboard,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
@@ -34,7 +35,7 @@ export default function Login({navigation}) {
   }, []);
 
   async function isSucess(userFull) {
-    const isSuccessRequest = await validateToken(JSON.stringify(userFull));
+    const isSuccessRequest = await validateToken(userFull);
     setIsSuccess(isSuccessRequest);
     getAccessToken({request_token: token});
     if (isSuccessRequest) {
