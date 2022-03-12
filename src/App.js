@@ -1,13 +1,15 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import { View, Text } from 'react-native';
 
 
 function App() {
   return (
     <View>
       <Text>Compass Flix</Text>
-    </View>
+    </View >
   );
 }
+
+
 
 export default App;
