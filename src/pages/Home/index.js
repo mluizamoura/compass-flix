@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
+import {View, Text, StyleSheet, Image, FlatList, TouchableOpacity} from 'react-native';
 import api, {getMovie} from '../../service/api';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import stylePageHome from './style';
@@ -33,8 +33,9 @@ export default function Home() {
           data={movie}
           keyExtractor={item => item.id.toString()}
           numColumns={4}
+          contentContainerStyle = {{alignItems:'center'}}
           renderItem={({item}) => (
-            <View Style={{flexDirection: 'row'}}>
+            <TouchableOpacity>
               <View style={stylePageHome.styleApiMovie}>
                 <Text>API Movies</Text>
               </View>
@@ -43,7 +44,7 @@ export default function Home() {
                 <Icon style={stylePageHome.icon} name="star" />
                 <Text style={stylePageHome.avaluationstyle}>8.3/10</Text>
               </View>
-            </View>
+            </TouchableOpacity>
           )}
         />
       </View>
