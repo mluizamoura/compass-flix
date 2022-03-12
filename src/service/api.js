@@ -33,7 +33,7 @@ export async function approveRequestToken(tolken) {
     );
     return data;
   } catch (error) {
-    console.warn(tolken, 'approveRequestToken');
+    console.warn(error);
   }
 }
 
@@ -50,6 +50,22 @@ export async function validateToken(body) {
       },
     );
     return data.success;
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
+export async function getAccessToken(token) {
+  try {
+    await api.post(
+      'authentication/session/new?api_key=c3dc5cb91b1c309207a60a76c5742842',
+      token,
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
   } catch (error) {
     console.warn(error);
   }

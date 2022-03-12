@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {View} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import api, {getMovie} from '../../service/api';
 
-export default function Home() {
+export default function Home({navigation}) {
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
@@ -13,5 +13,15 @@ export default function Home() {
     awaitMovie();
   }, []);
 
-  return <View></View>;
+  return (
+    <View>
+      <Text>home</Text>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('Movies');
+        }}>
+        <Text>filme</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
