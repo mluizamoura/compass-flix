@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet, Image, FlatList} from 'react-native';
 import api, {getMovie} from '../../service/api';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import stylePageHome from './style';
 
 export default function Home() {
   const [movie, setMovie] = useState(null);
@@ -50,59 +51,4 @@ export default function Home() {
   );
 }
 
-const stylePageHome = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#000000',
-  },
-  boxHeader: {
-    height: '22%',
-  },
-  boxFlatList: {
-    height: '70%',
-    alignItems: 'center',
-  },
-  styleApiMovie: {
-    backgroundColor: '#FFFFFF',
-    width: 78,
-    height: 90,
-    margin: '2%',
-    borderRadius: 10,
-    marginTop: '10%',
-  },
 
-  greetingText: {
-    color: '#FFFFFF',
-    marginTop: '15%',
-    marginLeft: '5%',
-    fontSize: 18,
-    fontWeight: 'bold',
-    fontFamily: 'open sans',
-  },
-  textDescription: {
-    color: '#FFFFFF',
-    fontSize: 10,
-    marginLeft: '5%',
-    fontFamily: 'open sans',
-  },
-
-  textPopularMovies: {
-    color: '#FFFFFF',
-    fontSize: 12,
-    marginTop: '6%',
-    marginLeft: '5%',
-    fontFamily: 'open sans',
-  },
-  avaluationstyle: {
-    flexDirection: 'row',
-    fontSize: 9,
-    color: '#FFFFFF',
-    marginLeft: '4%',
-    fontFamily: 'open sans',
-  },
-  icon: {
-    color: '#EC2626',
-    textAlign: 'center',
-    fontSize: 11,
-  },
-});
