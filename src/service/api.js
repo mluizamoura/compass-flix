@@ -15,24 +15,41 @@ export async function getMovie() {
   }
 }
 
-export async function getTolken() {
+export async function getRequestToken() {
   try {
     const {data} = await api.get(
       'authentication/token/new?api_key=c3dc5cb91b1c309207a60a76c5742842',
     );
-    return data.token;
+    return data.request_token;
   } catch (error) {
-    console.warn(error);
+    console.warn('getRequestToken');
   }
 }
 
-export async function validateTolken(user) {
+export async function approveRequestToken(tolken) {
+  try {
+    const {data} = await axios.get(
+      `https://www.themoviedb.org/authenticate/${tolken}`,
+    );
+    return data;
+  } catch (error) {
+    console.warn(tolken, 'approveRequestToken');
+  }
+}
+
+export async function validateToken(body) {
   try {
     const {data} = await api.post(
       'authentication/token/validate_with_login?api_key=c3dc5cb91b1c309207a60a76c5742842',
-      user,
+      body,
+      {
+        headers: {
+          Authorization: `Bearer ${body}`,
+          'Content-Type': 'application/json;charset=utf-8',
+        },
+      },
     );
-    console.warn(data);
+    return data.success;
   } catch (error) {
     console.warn(error);
   }
