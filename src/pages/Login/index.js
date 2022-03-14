@@ -6,35 +6,35 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
-  StyleSheet,
 } from 'react-native';
+import styles from './styles';
 
 export default function Login() {
   return (
-    <KeyboardAvoidingView>
-      <View style={styles.Container}>
-        
-        {/* <View style={styles.Banner}>
-          <Image source={require('../../assets/Banner.png')} />
+    <View style={styles.container}>
+      <KeyboardAvoidingView>
+        <View>
+          <View>
+            <Image
+              style={styles.banner}
+              source={require('../../assets/Banner.png')}
+            />
+          </View>
+          <View style={styles.logo}>
+            <Image source={require('../../assets/login.png')} />
+          </View>
         </View>
-
-        <View style={styles.Logo}>
-          <Image source={require('../../assets/login.png')} />
-        </View> */}
-
-        <View style={styles.TextEntry}>
+        <View style={styles.textEntry}>
           <Text>Login</Text>
           <Text>Entre na sua conta para continuar.</Text>
         </View>
-
-        <View style={styles.InputArea}>
+        <View style={styles.inputArea}>
           <TextInput
-            style={styles.Input}
+            style={styles.input}
             placeholder="e-mail"
             onChangeText={() => {}}
             placeholderTextColor="#fff"
           />
-
           <TextInput
             placeholder="senha"
             onChangeText={() => {}}
@@ -42,48 +42,12 @@ export default function Login() {
             secureTextEntry={true}
           />
         </View>
-
-        <View style={styles.BtnSubmit}>
+        <View style={styles.btnSubmit}>
           <TouchableOpacity>
             <Text>Entrar</Text>
           </TouchableOpacity>
         </View>
-      </View>
       </KeyboardAvoidingView>
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  InputArea: {
-    backGroundColor: '#C4C4C459',
-  },
-  BtnSubmit: {
-    backGroundColor: '#E9A6A6',
-  },
-  Container: {
-    backgroundColor: '#000',
-   
-  },
-  Banner: {
-    alignItems: 'center',
-    resizeMode: 'cover',
-    
-  },
-  TextEntry: {
-    backGroundColor: '#fff', //nao pegou a cor
-    alignItems: 'center',
-    
-  },
-  Logo: {
-    alignItems: 'center',
-    bottom: '200',
-  },
-  Input: {
-    color: '#fff',
-  },
-  BackGround: {
-    backgroundColor: '#000',
-    flex: 1,
-
-  },
-});
