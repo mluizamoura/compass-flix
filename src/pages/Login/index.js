@@ -1,12 +1,6 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  TextInput,
-  AsyncStorage,
-  Alert,
-  Keyboard,
-} from 'react-native';
+import {View, Text, TouchableOpacity, TextInput, Keyboard} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
+
 import React, {useState, useEffect} from 'react';
 import {
   getAccessToken,
@@ -38,13 +32,17 @@ export default function Login({navigation}) {
     const isSuccessRequest = await validateToken(userFull);
     setIsSuccess(isSuccessRequest);
     getAccessToken({request_token: token});
+    AsyncStorage.multiSet([
+      ['@CodeApi:username', username],
+      ['@CodeApi:token', token],
+    ]);
+
     if (isSuccessRequest) {
       return navigation.reset({
         index: 0,
         routes: [{name: 'HomeTabScreen'}],
       });
     }
-    // await AsyncStorage.setItem(['@CodeApi:user', JSON.stringify(user)]);
   }
 
   return (
