@@ -13,6 +13,7 @@ export default function Login() {
   return (
     <KeyboardAvoidingView>
       <View style={styles.Container}>
+        
         {/* <View style={styles.Banner}>
           <Image source={require('../../assets/Banner.png')} />
         </View>
