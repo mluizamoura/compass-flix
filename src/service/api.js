@@ -61,9 +61,9 @@ export async function validateToken(body) {
   }
 }
 
-export async function getAccessToken(token) {
+export async function getIdAccessToken(token) {
   try {
-    await api.post(
+    const {data} = await api.post(
       'authentication/session/new?api_key=c3dc5cb91b1c309207a60a76c5742842',
       token,
       {
@@ -72,6 +72,18 @@ export async function getAccessToken(token) {
         },
       },
     );
+    return data.session_id;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getAccountDetails(seesionId) {
+  try {
+    const {data} = await api.get(
+      `account?api_key=c3dc5cb91b1c309207a60a76c5742842&session_id=${seesionId}`,
+    );
+    return data;
   } catch (error) {
     console.log(error);
   }

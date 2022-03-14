@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
-import {getMovie} from '../../service/api';
+import {getAccountDetails, getMovie} from '../../service/api';
 import AsyncStorage from '@react-native-community/async-storage';
 
 export default function Home({navigation}) {
@@ -11,9 +11,10 @@ export default function Home({navigation}) {
     async function awaitMovie() {
       const response = await getMovie();
       setMovie(response);
-      const username = await AsyncStorage.getItem('@CodeApi:username');
-      setName(username);
-      console.warn(username);
+      const sessionId = await AsyncStorage.getItem('@CodeApi:session');
+      const count = await getAccountDetails(sessionId);
+      setName(count.name);
+      console.warn(count);
     }
     awaitMovie();
   }, []);

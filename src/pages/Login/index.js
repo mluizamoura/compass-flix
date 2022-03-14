@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 import React, {useState, useEffect} from 'react';
 import {
-  getAccessToken,
+  getIdAccessToken,
   getRequestToken,
   validateToken,
 } from '../../service/api';
@@ -30,11 +30,12 @@ export default function Login({navigation}) {
 
   async function isSucess(userFull) {
     const isSuccessRequest = await validateToken(userFull);
+    const sessionId = await getIdAccessToken({request_token: token});
     setIsSuccess(isSuccessRequest);
-    getAccessToken({request_token: token});
     AsyncStorage.multiSet([
       ['@CodeApi:username', username],
       ['@CodeApi:token', token],
+      ['@CodeApi:session', sessionId],
     ]);
 
     if (isSuccessRequest) {
