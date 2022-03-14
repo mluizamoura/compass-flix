@@ -25,8 +25,8 @@ export default function Login() {
           </View>
         </View>
         <View style={styles.textEntry}>
-          <Text>Login</Text>
-          <Text>Entre na sua conta para continuar.</Text>
+          <Text style={{fontSize: 24, color:'#fff'}}>Login</Text>
+          <Text style={{fontSize:13, color:'#fff'}}>Entre na sua conta para continuar.</Text>
         </View>
         <View style={styles.inputArea}>
           <TextInput
@@ -35,7 +35,8 @@ export default function Login() {
             onChangeText={() => {}}
             placeholderTextColor="#fff"
           />
-          <TextInput
+          <TextInput 
+            style={styles.input}
             placeholder="senha"
             onChangeText={() => {}}
             placeholderTextColor="#fff"
