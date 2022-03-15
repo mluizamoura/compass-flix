@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import Loading from '../../components/Loading';
 
 export default function Home({navigation}) {
-  const [name, setName] = useState(null);
+  const [name, setName] = useState(false);
   const [movie, setMovie] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -64,6 +64,7 @@ export default function Home({navigation}) {
   const renderItem = ({item}) => {
     return (
       <TouchableOpacity
+        style={styles.containerMovie}
         onPress={() => {
           navigation.navigate('Movies');
         }}>
@@ -74,10 +75,10 @@ export default function Home({navigation}) {
               uri: `http://image.tmdb.org/t/p/w92/${item.poster_path}`,
             }}
           />
-        </View>
-        <View style={styles.avaluationstyle}>
-          <Icon style={styles.icon} name="star" />
-          <Text style={styles.avaluationstyle}>{item.vote_average}/10</Text>
+          <View style={styles.containerAvaluation}>
+            <Icon style={styles.icon} name="star" />
+            <Text style={styles.avaluationstyle}>{item.vote_average}/10</Text>
+          </View>
         </View>
       </TouchableOpacity>
     );
@@ -88,6 +89,7 @@ export default function Home({navigation}) {
       {name ? (
         <FlatList
           data={movie}
+          contentContainerStyle={styles.containerFlatList}
           keyExtractor={(item, index) => index}
           ListHeaderComponent={renderHeader}
           ListFooterComponent={renderFooter}
