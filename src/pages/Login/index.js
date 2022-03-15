@@ -1,10 +1,72 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import {View, Text, TouchableOpacity, TextInput, Keyboard} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
-export default function Login() {
+import React, {useState, useEffect} from 'react';
+import {
+  getIdAccessToken,
+  getRequestToken,
+  validateToken,
+} from '../../service/api';
+
+export default function Login({navigation}) {
+  const [token, setToken] = useState();
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+  const [isSuccess, setIsSuccess] = useState(null);
+
+  const user = {
+    username: username,
+    password: password,
+    request_token: token,
+  };
+
+  useEffect(() => {
+    async function awaitGetToken() {
+      const requestTolken = await getRequestToken();
+      setToken(requestTolken);
+    }
+    awaitGetToken();
+  }, []);
+
+  async function isSucess(userFull) {
+    const isSuccessRequest = await validateToken(userFull);
+    const sessionId = await getIdAccessToken({request_token: token});
+    setIsSuccess(isSuccessRequest);
+    AsyncStorage.multiSet([
+      ['@CodeApi:username', username],
+      ['@CodeApi:token', token],
+      ['@CodeApi:session', sessionId],
+    ]);
+
+    if (isSuccessRequest) {
+      return navigation.reset({
+        index: 0,
+        routes: [{name: 'HomeTabScreen'}],
+      });
+    }
+  }
+
   return (
     <View>
-      <Text>index</Text>
+      <TextInput
+        placeholder="name"
+        onChangeText={usernameInput => {
+          setUsername(usernameInput);
+        }}
+      />
+      <TextInput
+        placeholder="senha"
+        onChangeText={passwordInput => {
+          setPassword(passwordInput);
+        }}
+      />
+      <TouchableOpacity
+        onPress={() => {
+          Keyboard.dismiss();
+          isSucess(user);
+        }}>
+        <Text>Entrar</Text>
+      </TouchableOpacity>
     </View>
   );
 }

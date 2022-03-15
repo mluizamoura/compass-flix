@@ -1,5 +1,4 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
+import {StyleSheet} from 'react-native';
 
 const stylePageHome = StyleSheet.create({
   container: {
@@ -9,7 +8,6 @@ const stylePageHome = StyleSheet.create({
   boxHeader: {
     height: '22%',
   },
-
   greetingText: {
     color: '#FFFFFF',
     marginTop: '15%',
@@ -17,6 +15,9 @@ const stylePageHome = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     fontFamily: 'open sans',
+    name: {
+      color: '#E9A6A6',
+    },
   },
   textPopularMovies: {
     color: '#FFFFFF',
@@ -34,7 +35,6 @@ const stylePageHome = StyleSheet.create({
   boxFlatList: {
     alignItems: 'center',
   },
-
   styleApiMovie: {
     margin: 8,
     width: 78,
@@ -42,13 +42,11 @@ const stylePageHome = StyleSheet.create({
     borderRadius: 10,
     marginTop: '10%',
   },
-
   imgstyle: {
     width: 76.02,
     height: 95.03,
     borderRadius: 10,
   },
-
   avaluationstyle: {
     flexDirection: 'row',
     fontSize: 9,
