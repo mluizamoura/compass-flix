@@ -1,13 +1,16 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import Home from './pages/Home';
+import { View, Text } from 'react-native';
+import Movies from './pages/Movies';
 
 function App() {
   return (
     // <View>
     //   <Text>Compass Flix</Text>
     // </View>
-    <Home />
+
+   
+      <Movies/>
+    
   );
 }
 

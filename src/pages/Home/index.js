@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   Image,
   FlatList,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
-import api, { getMovie } from '../../service/api';
+import api from '../../service/api';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import App from './loader'
 import stylePageHome from './style';
+
 
 export default function Home({ navigation }) {
 
@@ -31,6 +33,17 @@ export default function Home({ navigation }) {
   useEffect(() => {
     awaitMovie();
   }, []);
+
+  load = () => {
+    return (
+      
+      <View style={stylePageHome.loader}>
+        <ActivityIndicator size="large" color="red" />
+      </View>
+    )
+  }
+
+
 
   return (
 
@@ -72,10 +85,16 @@ export default function Home({ navigation }) {
                 <Text style={stylePageHome.avaluationstyle}>{item.vote_average}/10</Text>
               </View>
             </TouchableOpacity>
+
           )}
+          ListFooterComponent={this.load}
         />
+
       </View>
     </View>
   );
+  
+
 }
+
 

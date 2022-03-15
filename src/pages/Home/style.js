@@ -43,6 +43,11 @@ const stylePageHome = StyleSheet.create({
     marginTop: '10%',
   },
 
+  loader: {
+    marginTop: 10,
+    alignItems: 'center',
+  },
+
   imgstyle: {
     width: 76.02,
     height: 95.03,
