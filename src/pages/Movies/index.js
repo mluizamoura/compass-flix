@@ -1,11 +1,31 @@
 import { View, Text, TouchableOpacity, Image, StyleSheet, FlatList } from 'react-native';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import Feather from 'react-native-vector-icons/Feather'
 import { NavigationHelpersContext } from '@react-navigation/native';
+import api from "../../service/api"
 
 export default function Movies({ navigation }) {
 
+  const [elenco, setElenco] = useState([])
+  const [id, setId] = useState("414906")
+  
+  useEffect(() => {
+    async function getElenco(){
+      try{
+        const {data} = await api.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=c3dc5cb91b1c309207a60a76c5742842&language=pt-BR`)
+        setElenco(data.cast)
+      }
+      catch(error) {
+        console.warn(error)
+      }
+    }
+getElenco()
+  }, [])
+
+
+  
+console.warn(elenco)
   const testflatlist = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
   return (
