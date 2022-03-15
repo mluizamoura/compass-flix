@@ -1,17 +1,61 @@
-import React from 'react';
 import {
-  Text,
-  KeyboardAvoidingView,
   View,
-  TextInput,
+  Text,
   TouchableOpacity,
+  TextInput,
+  Keyboard,
   Image,
+  KeyboardAvoidingView,
 } from 'react-native';
-import styles from './styles';
+import AsyncStorage from '@react-native-community/async-storage';
+import React, {useState, useEffect} from 'react';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import {
+  getIdAccessToken,
+  getRequestToken,
+  validateToken,
+} from '../../service/api';
+import styles from './styles';
 
-export default function Login() {
+export default function Login({navigation}) {
+  const [token, setToken] = useState();
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
+  const [isSuccess, setIsSuccess] = useState(null);
+
+  const user = {
+    username: username,
+    password: password,
+    request_token: token,
+  };
+
+  useEffect(() => {
+    async function awaitGetToken() {
+      const requestTolken = await getRequestToken();
+      setToken(requestTolken);
+    }
+    awaitGetToken();
+  }, []);
+
+  async function isSucess(userFull) {
+    const isSuccessRequest = await validateToken(userFull);
+    const sessionId = await getIdAccessToken({request_token: token});
+    setIsSuccess(isSuccessRequest);
+    AsyncStorage.multiSet([
+      ['@CodeApi:username', username],
+      ['@CodeApi:token', token],
+      ['@CodeApi:session', sessionId],
+    ]);
+
+    if (isSuccessRequest) {
+      return navigation.reset({
+        index: 0,
+        routes: [{name: 'HomeTabScreen'}],
+      });
+    }
+  }
+
   return (
     <KeyboardAvoidingView behavior="position" style={styles.container}>
       <View>
@@ -36,21 +80,29 @@ export default function Login() {
           autoComplete={'email'}
           style={styles.input}
           placeholder="e-mail"
-          onChangeText={() => {}}
+          onChangeText={usernameInput => {
+            setUsername(usernameInput);
+          }}
           placeholderTextColor="rgba(255, 255, 255, 0.5)"
         />
         <AntDesign style={styles.lockIcon} name="lock" color="#fff" size={18} />
         <TextInput
+          onChangeText={passwordInput => {
+            setPassword(passwordInput);
+          }}
           autoComplete={'password'}
           style={styles.input}
           placeholder="senha"
-          onChangeText={() => {}}
           placeholderTextColor="rgba(255, 255, 255, 0.5)"
           secureTextEntry={true}
         />
       </View>
       <View style={styles.btnSubmit}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            Keyboard.dismiss();
+            isSucess(user);
+          }}>
           <Text style={{fontSize: 14, fontWeight: 'bold', color: '#1F1D36'}}>
             Entrar
           </Text>
