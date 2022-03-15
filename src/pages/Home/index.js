@@ -34,8 +34,12 @@ export default function Home({navigation}) {
   useEffect(() => {
     async function awaitUser() {
       const sessionId = await AsyncStorage.getItem('@CodeApi:session');
-      const count = await getAccountDetails(sessionId);
-      setName(count.name);
+      const account = await getAccountDetails(sessionId);
+      if (account.name) {
+        setName(account.name);
+      } else {
+        setName(account.username);
+      }
     }
     awaitUser();
   }, []);
