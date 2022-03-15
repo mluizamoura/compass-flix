@@ -8,8 +8,10 @@ const styles = StyleSheet.create({
   },
   inputArea: {
     borderRadius: 35,
-    marginBottom: 45,
+    marginBottom: 20,
     alignItems: 'center',
+    
+    
   },
   btnSubmit: {
     backgroundColor: '#E9A6A6',
@@ -17,19 +19,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 35,
     width: 95,
-    justifyContent:'center',
-    color:'#1F1D36',
+    justifyContent: 'center',
     alignSelf: 'center',
-    
   },
   banner: {
-    width: '100%',
+    resizeMode:"cover",
+    
+    
   },
 
   textEntry: {
-    marginTop: 30,
     alignItems: 'center',
-    fontSize: 25,
+    
+    
   },
 
   logo: {
@@ -38,16 +40,30 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: -50,
     marginHorizontal: 0,
+    
   },
 
   input: {
-    color: '#fff',
+    
     backgroundColor: '#C4C4C459',
-    marginBottom: 14,
-    borderRadius:30,
+    borderRadius: 30,
     width: 243,
     height: 33,
+    flexDirection: 'row',
+    paddingLeft: 40,
+    paddingBottom: 8,
+    fontSize: 9,
     
+
+  },
+  userIcon: {
+    padding: 10,
+    right: 100,
+    top: 35,
+  },
+  lockIcon: {
+    right: 100,
+    top: 25,
   },
 });
 
