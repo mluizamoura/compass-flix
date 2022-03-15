@@ -15,17 +15,15 @@ function HomeTabScreen() {
         tabBarInactiveTintColor: '#304FFE',
         tabBarShowLabel: false,
         tabBarStyle: {
-          backgroundColor: '#f00',
-          height: 90,
+          backgroundColor: '#454545',
+          height: 54,
         },
       }}>
       <Tab.Screen
         name="StackDefault"
         component={StackDefault}
         options={{
-          tabBarIcon: ({color, focused}) => (
-            <ButtonHome focused={focused} name="StackDefault" color={color} />
-          ),
+          tabBarIcon: () => <ButtonHome name="StackDefault" />,
         }}
       />
     </Tab.Navigator>

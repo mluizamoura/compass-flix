@@ -14,7 +14,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://api.themoviedb.org/3/authentication/token/new?api_key={{api_key}}",
+							"raw": "https://api.themoviedb.org/3/authentication/token/new?api_key=c3dc5cb91b1c309207a60a76c5742842",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -52,7 +52,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key={{api_key}}",
+							"raw": "https://api.themoviedb.org/3/authentication/token/validate_with_login?api_key=c3dc5cb91b1c309207a60a76c5742842",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -90,7 +90,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://api.themoviedb.org/3/authentication/session/new?api_key={{api_key}}",
+							"raw": "https://api.themoviedb.org/3/authentication/session/new?api_key=c3dc5cb91b1c309207a60a76c5742842",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -119,7 +119,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://api.themoviedb.org/3/account?api_key={{api_key}}&session_id=SESSION_ID_CRIADO_NO_REQUEST_ANTERIOR",
+							"raw": "https://api.themoviedb.org/3/account?api_key=c3dc5cb91b1c309207a60a76c5742842&session_id=SESSION_ID_CRIADO_NO_REQUEST_ANTERIOR",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -155,7 +155,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://api.themoviedb.org/3/movie/popular?api_key={{api_key}}&language=pt-BR&page=1",
+							"raw": "https://api.themoviedb.org/3/movie/popular?api_key=c3dc5cb91b1c309207a60a76c5742842&language=pt-BR&page=1",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -191,7 +191,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://api.themoviedb.org/3/movie/MOVIE_ID?api_key={{api_key}}&language=pt-BR",
+							"raw": "https://api.themoviedb.org/3/movie/MOVIE_ID?api_key=c3dc5cb91b1c309207a60a76c5742842&language=pt-BR",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -223,7 +223,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://api.themoviedb.org/3/movie/MOVIE_ID/credits?api_key={{api_key}}&language=pt-BR",
+							"raw": "https://api.themoviedb.org/3/movie/MOVIE_ID/credits?api_key=c3dc5cb91b1c309207a60a76c5742842&language=pt-BR",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -258,7 +258,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://api.themoviedb.org/3/configuration?api_key={{api_key}}",
+					"raw": "https://api.themoviedb.org/3/configuration?api_key=c3dc5cb91b1c309207a60a76c5742842",
 					"protocol": "https",
 					"host": [
 						"api",
