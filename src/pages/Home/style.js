@@ -3,10 +3,9 @@ import {StyleSheet} from 'react-native';
 const stylePageHome = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#000000',
-  },
-  boxHeader: {
-    height: '22%',
   },
   greetingText: {
     color: '#FFFFFF',
@@ -15,14 +14,15 @@ const stylePageHome = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     fontFamily: 'open sans',
-    name: {
-      color: '#E9A6A6',
-    },
+  },
+  greetingText__username: {
+    color: '#E9A6A6',
   },
   textPopularMovies: {
     color: '#FFFFFF',
     fontSize: 12,
     marginTop: '6%',
+    marginBottom: '7%',
     marginLeft: '5%',
     fontFamily: 'open sans',
   },
@@ -31,9 +31,6 @@ const stylePageHome = StyleSheet.create({
     fontSize: 10,
     marginLeft: '5%',
     fontFamily: 'open sans',
-  },
-  boxFlatList: {
-    alignItems: 'center',
   },
   styleApiMovie: {
     margin: 8,
@@ -52,6 +49,7 @@ const stylePageHome = StyleSheet.create({
     fontSize: 9,
     color: '#FFFFFF',
     marginLeft: '4%',
+    marginBottom: 8,
     fontFamily: 'open sans',
   },
   icon: {
