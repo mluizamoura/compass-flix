@@ -11,36 +11,38 @@ export default function Movies({ navigation }) {
   return (
     <View style={styles.container}>
 
-      <View>
-        <Image style={styles.backGroundMovie} source={{
-          uri: 'http://image.tmdb.org/t/p/w780/cKNxg77ll8caX3LulREep4C24Vx.jpg'
-        }} />
-        <TouchableOpacity style={styles.buttomBack}
-          onPress={() => goBack()}>
-          <AntDesign name='arrowleft' size={25} />
-        </TouchableOpacity>
+      <Image style={styles.backGroundMovie} source={{
+        uri: 'http://image.tmdb.org/t/p/w780/cKNxg77ll8caX3LulREep4C24Vx.jpg'
+      }} />
+      <TouchableOpacity style={styles.containerButtonBack}
+        onPress={() => goBack()}>
+        <AntDesign style={styles.buttonBack} name='arrowleft' size={25} />
+      </TouchableOpacity>
 
-        <TouchableOpacity>
-          <Feather name='star' size={30} style={styles.starIcon} />
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.containerButtonStar}>
+        <Feather name='star' size={25} style={styles.buttonStar} />
+      </TouchableOpacity>
 
-        <Image style={styles.capaMovie} source={{
-          uri: 'http://image.tmdb.org/t/p/w780/cKNxg77ll8caX3LulREep4C24Vx.jpg'
-        }} />
+      <Image style={styles.capaMovie} source={{
+        uri: 'http://image.tmdb.org/t/p/w780/cKNxg77ll8caX3LulREep4C24Vx.jpg'
+      }} />
 
-        <Text style={styles.titleMovie}>The Batman 2022</Text>
-        <Text style={styles.yearMovie}>2022</Text>
-        <Text style={styles.timeMovie}>174min</Text>
-        <Text style={styles.autorMovie}>Direção por Matt Reeves</Text>
-        <Text style={styles.rated}>8.5/10</Text>
-        <TouchableOpacity>
-          <AntDesign name='heart' size={25} style={styles.heartIcon} />
-        </TouchableOpacity>
-        <Text style={styles.descriptionMovie}>DESCUBRA A VERDADE. Em seu segundo ano de combate ao crime, Batman descobre a corrupção em Gotham City que se conecta à sua própria família enquanto enfrenta um serial killer conhecido como Charada.</Text>
-        <Text style={styles.elenco}>Elenco</Text>
+      <Text style={styles.titleMovie}>The Batman 2022</Text>
+      <Text style={styles.yearMovie}>2022</Text>
+      <Text style={styles.timeMovie}>174min</Text>
+      <Text style={styles.autorMovie}>Direção por Matt Reeves</Text>
+      <Text style={styles.ratedMovie}>8.5/10</Text>
+      <TouchableOpacity>
+        <AntDesign name='heart' size={22} style={styles.heartIcon} />
+      </TouchableOpacity>
+      <Text style={styles.liked}>30k</Text>
 
 
-      </View>
+      <Text style={styles.descriptionMovie}>DESCUBRA A VERDADE. Em seu segundo ano de combate ao crime, Batman descobre a corrupção em Gotham City que se conecta à sua própria família enquanto enfrenta um serial killer conhecido como Charada.</Text>
+      <Text style={styles.elenco}>Elenco</Text>
+
+
+
 
       <FlatList
         style={styles.viewFLatList}
@@ -49,12 +51,12 @@ export default function Movies({ navigation }) {
         contentContainerStyle={{ alignItems: 'center' }}
         renderItem={({ item }) => (
           <View >
-            <Image style={styles.imagemFlatList}
+            <Image style={styles.imageFlatList}
               source={{
                 uri: `https://image.tmdb.org/t/p/w780/cKNxg77ll8caX3LulREep4C24Vx.jpg`
               }} />
-            <Text style={styles.name}>FelipeMattos de Lima Valença</Text>
-            <Text style={styles.papel}>nome do papel</Text>
+            <Text style={styles.name}>Felipe Mattos de Lima Valença</Text>
+            <Text style={styles.character}>nome do papel</Text>
           </View>
         )}
 
@@ -83,54 +85,60 @@ const styles = StyleSheet.create({
 
   },
 
-  buttomBack: {
-    marginLeft: 20,
-    marginTop: 40,
+  containerButtonBack: {
     position: 'absolute',
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
+    top: 19,
+    left: 20,
+    backgroundColor: 'white',
+    borderRadius: 40,
     width: 30,
     height: 30,
-    borderRadius: 40,
-    backgroundColor: 'white',
-    borderWidth: 1,
-    color: 'black,'
+  },
 
+  buttonBack: {
+    color: 'black',
 
   },
-  starIcon: {
 
-    color: 'white',
+  containerButtonStar: {
     position: 'absolute',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-    marginTop: -125,
-    marginLeft: 360,
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: 19,
+    right: 20,
+    backgroundColor: 'white',
+    borderRadius: 40,
+    width: 30,
+    height: 30,
 
+  },
+  buttonStar: {
 
+    color: 'black',
 
   },
 
   capaMovie: {
-    marginLeft: 20,
-    marginTop: 120,
-    position: 'absolute',
+    zIndex: 999,
+    position: 'relative',
+    left: 20,
+    top: -45,
     width: 116,
     height: 182,
-    justifyContent: 'center',
-    alignItems: 'center',
+    alignSelf: 'flex-start',
     borderRadius: 8,
 
   },
 
   titleMovie: {
-    alignSelf: 'center',
     color: "#FFFFFF",
     fontSize: 20,
     fontWeight: 'bold',
     fontFamily: 'Open Sans',
-    marginLeft: 50,
-    marginTop: 15,
+    marginLeft: 70,
+    marginTop: -160,
 
   },
 
@@ -140,7 +148,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Open Sans',
     alignSelf: 'flex-end',
     marginTop: -17,
-    marginRight: 70,
+    marginRight: 60,
     color: "#FFFFFF"
   },
 
@@ -149,8 +157,6 @@ const styles = StyleSheet.create({
     color: 'white',
     alignSelf: 'flex-end',
     marginRight: 25,
-
-
 
   },
 
@@ -162,12 +168,11 @@ const styles = StyleSheet.create({
 
   },
 
-  rated: {
-    alignSelf: 'center',
+  ratedMovie: {
     color: "#E9A6A6",
     fontSize: 30,
-    marginTop: 15,
-    marginLeft: -20,
+    marginTop: 25,
+
 
   },
 
@@ -180,31 +185,40 @@ const styles = StyleSheet.create({
 
   },
 
+  liked: {
+    marginTop: -5,
+    marginLeft: 202,
+    color: 'white',
+    textAlign: 'center',
+    fontFamily: 'Open Sans',
+    fontSize: 10,
+
+
+  },
+
   descriptionMovie: {
     color: "#FFFFFF",
     fontSize: 12,
     width: 332,
     height: 100,
-    justifyContent: 'center',
-    alignItems: 'center',
+    alignSelf: 'flex-start',
     marginTop: 30,
     marginLeft: 20,
 
   },
 
   elenco: {
-    flexDirection: 'row',
+    paddingVertical: 4,
+    textAlign: 'center',
     marginTop: -25,
     borderColor: 'white',
     borderWidth: 1,
     borderRadius: 12,
     marginLeft: 20,
     color: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignContent: 'center',
-    width: 35,
-    height: 20,
+    alignSelf: 'flex-start',
+    width: 40,
+
     backgroundColor: '#9C4A8B',
     fontSize: 10,
     marginBottom: 5,
@@ -219,11 +233,11 @@ const styles = StyleSheet.create({
 
   },
 
-  imagemFlatList: {
+  imageFlatList: {
     marginLeft: 20,
-    marginTop: 12,
-    width: 36,
-    height: 36,
+    marginTop: 10,
+    width: 35,
+    height: 35,
     borderRadius: 50,
   },
 
@@ -235,7 +249,7 @@ const styles = StyleSheet.create({
 
   },
 
-  papel: {
+  character: {
     color: 'white',
     fontSize: 11,
     marginLeft: 70,
