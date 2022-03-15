@@ -66,17 +66,17 @@ console.warn(elenco)
 
       <FlatList
         style={styles.viewFLatList}
-        data={testflatlist}
+        data={elenco}
         keyExtractor={(item, index) => index}
         contentContainerStyle={{ alignItems: 'center' }}
         renderItem={({ item }) => (
           <View >
             <Image style={styles.imageFlatList}
               source={{
-                uri: `https://image.tmdb.org/t/p/w780/cKNxg77ll8caX3LulREep4C24Vx.jpg`
+                uri: `https://image.tmdb.org/t/p/w45/${item.profile_path}`
               }} />
-            <Text style={styles.name}>Felipe Mattos de Lima Valença</Text>
-            <Text style={styles.character}>nome do papel</Text>
+            <Text style={styles.name}>{item.original_name}</Text>
+            <Text style={styles.character}>{item.character}</Text>
           </View>
         )}
 
