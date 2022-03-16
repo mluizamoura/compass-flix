@@ -30,22 +30,28 @@ console.warn(elenco)
 
   return (
     <View style={styles.container}>
-
-      <Image style={styles.backGroundMovie} source={{
-        uri: 'http://image.tmdb.org/t/p/w780/cKNxg77ll8caX3LulREep4C24Vx.jpg'
-      }} />
-      <TouchableOpacity style={styles.containerButtonBack}
-        onPress={() => goBack()}>
-        <AntDesign style={styles.buttonBack} name='arrowleft' size={25} />
+      <Image
+        style={styles.backGroundMovie}
+        source={{
+          uri: 'http://image.tmdb.org/t/p/w780/cKNxg77ll8caX3LulREep4C24Vx.jpg',
+        }}
+      />
+      <TouchableOpacity
+        style={styles.containerButtonBack}
+        onPress={() => navigation.goBack()}>
+        <AntDesign style={styles.buttonBack} name="arrowleft" size={25} />
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.containerButtonStar}>
-        <Feather name='star' size={25} style={styles.buttonStar} />
+        <Feather name="star" size={25} style={styles.buttonStar} />
       </TouchableOpacity>
 
-      <Image style={styles.capaMovie} source={{
-        uri: 'http://image.tmdb.org/t/p/w780/cKNxg77ll8caX3LulREep4C24Vx.jpg'
-      }} />
+      <Image
+        style={styles.capaMovie}
+        source={{
+          uri: 'http://image.tmdb.org/t/p/w780/cKNxg77ll8caX3LulREep4C24Vx.jpg',
+        }}
+      />
 
       <Text style={styles.titleMovie}>The Batman 2022</Text>
       <Text style={styles.yearMovie}>2022</Text>
@@ -53,25 +59,26 @@ console.warn(elenco)
       <Text style={styles.autorMovie}>Direção por Matt Reeves</Text>
       <Text style={styles.ratedMovie}>8.5/10</Text>
       <TouchableOpacity>
-        <AntDesign name='heart' size={22} style={styles.heartIcon} />
+        <AntDesign name="heart" size={22} style={styles.heartIcon} />
       </TouchableOpacity>
       <Text style={styles.liked}>30k</Text>
 
-
-      <Text style={styles.descriptionMovie}>DESCUBRA A VERDADE. Em seu segundo ano de combate ao crime, Batman descobre a corrupção em Gotham City que se conecta à sua própria família enquanto enfrenta um serial killer conhecido como Charada.</Text>
+      <Text style={styles.descriptionMovie}>
+        DESCUBRA A VERDADE. Em seu segundo ano de combate ao crime, Batman
+        descobre a corrupção em Gotham City que se conecta à sua própria família
+        enquanto enfrenta um serial killer conhecido como Charada.
+      </Text>
       <Text style={styles.elenco}>Elenco</Text>
-
-
-
 
       <FlatList
         style={styles.viewFLatList}
         data={elenco}
         keyExtractor={(item, index) => index}
-        contentContainerStyle={{ alignItems: 'center' }}
-        renderItem={({ item }) => (
-          <View >
-            <Image style={styles.imageFlatList}
+        contentContainerStyle={{alignItems: 'center'}}
+        renderItem={({item}) => (
+          <View>
+            <Image
+              style={styles.imageFlatList}
               source={{
                 uri: `https://image.tmdb.org/t/p/w45/${item.profile_path}`
               }} />
@@ -79,21 +86,17 @@ console.warn(elenco)
             <Text style={styles.character}>{item.character}</Text>
           </View>
         )}
-
       />
-
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black'
-
+    backgroundColor: 'black',
   },
 
   backGroundMovie: {
@@ -102,7 +105,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'pink',
     justifyContent: 'center',
     alignItems: 'center',
-
   },
 
   containerButtonBack: {
@@ -119,7 +121,6 @@ const styles = StyleSheet.create({
 
   buttonBack: {
     color: 'black',
-
   },
 
   containerButtonStar: {
@@ -132,12 +133,9 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     width: 30,
     height: 30,
-
   },
   buttonStar: {
-
     color: 'black',
-
   },
 
   capaMovie: {
@@ -149,17 +147,15 @@ const styles = StyleSheet.create({
     height: 182,
     alignSelf: 'flex-start',
     borderRadius: 8,
-
   },
 
   titleMovie: {
-    color: "#FFFFFF",
+    color: '#FFFFFF',
     fontSize: 20,
     fontWeight: 'bold',
     fontFamily: 'Open Sans',
     marginLeft: 70,
     marginTop: -160,
-
   },
 
   yearMovie: {
@@ -169,7 +165,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     marginTop: -17,
     marginRight: 60,
-    color: "#FFFFFF"
+    color: '#FFFFFF',
   },
 
   timeMovie: {
@@ -177,32 +173,26 @@ const styles = StyleSheet.create({
     color: 'white',
     alignSelf: 'flex-end',
     marginRight: 25,
-
   },
 
   autorMovie: {
     alignSelf: 'center',
     marginLeft: 70,
     fontSize: 10,
-    color: "#FFFFFF"
-
+    color: '#FFFFFF',
   },
 
   ratedMovie: {
-    color: "#E9A6A6",
+    color: '#E9A6A6',
     fontSize: 30,
     marginTop: 25,
-
-
   },
 
   heartIcon: {
-
     color: 'red',
     alignSelf: 'center',
     marginLeft: 200,
     marginTop: -30,
-
   },
 
   liked: {
@@ -212,19 +202,16 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontFamily: 'Open Sans',
     fontSize: 10,
-
-
   },
 
   descriptionMovie: {
-    color: "#FFFFFF",
+    color: '#FFFFFF',
     fontSize: 12,
     width: 332,
     height: 100,
     alignSelf: 'flex-start',
     marginTop: 30,
     marginLeft: 20,
-
   },
 
   elenco: {
@@ -242,7 +229,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#9C4A8B',
     fontSize: 10,
     marginBottom: 5,
-
   },
 
   viewFLatList: {
@@ -250,7 +236,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     width: 400,
     flexWrap: 'wrap',
-
   },
 
   imageFlatList: {
@@ -265,17 +250,12 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     marginLeft: 70,
-    marginTop: -40
-
+    marginTop: -40,
   },
 
   character: {
     color: 'white',
     fontSize: 11,
     marginLeft: 70,
-
   },
-
-
-
-})
+});
