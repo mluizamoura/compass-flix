@@ -1,29 +1,52 @@
-import { View, Text, TouchableOpacity, Image, StyleSheet, FlatList } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  StyleSheet,
+  FlatList,
+} from 'react-native';
 import React, {useState, useEffect} from 'react';
-import AntDesign from 'react-native-vector-icons/AntDesign'
-import Feather from 'react-native-vector-icons/Feather'
-import { NavigationHelpersContext } from '@react-navigation/native';
-import api from "../../service/api"
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import Feather from 'react-native-vector-icons/Feather';
+import {NavigationHelpersContext} from '@react-navigation/native';
+import api from '../../service/api';
 
 export default function Movies({route, navigation}) {
-  const {item} = route.params
+  const {item} = route.params;
+  const testflatlist = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+  const [details, setDetails] = useState([]);
+  const [elenco, setElenco] = useState([]);
+  const [id, setId] = useState(item.id);
 
-  const [elenco, setElenco] = useState([])
-  const [id, setId] = useState(item.id)
-  
   useEffect(() => {
-    async function getElenco(){
-      try{
-        const {data} = await api.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=c3dc5cb91b1c309207a60a76c5742842&language=pt-BR`)
-        setElenco(data.cast)
-      }
-      catch(error) {
-        console.warn(error)
+    async function getDetails() {
+      try {
+        const {data} = await api.get(
+          `https://api.themoviedb.org/3/movie/${id}?api_key=c3dc5cb91b1c309207a60a76c5742842&language=pt-BR`,
+        );
+        setDetails(data);
+      } catch (error) {
+        console.warn(error);
       }
     }
-getElenco()
-  }, [])
+    getDetails();
+  }, []);
+  console.warn(details.overview);
+  useEffect(() => {
+    async function getElenco() {
+      try {
+        const {data} = await api.get(
+          `https://api.themoviedb.org/3/movie/${id}/credits?api_key=c3dc5cb91b1c309207a60a76c5742842&language=pt-BR`,
+        );
+        setElenco(data.cast);
+      } catch (error) {
+        console.warn(error);
+      }
+    }
+    getElenco();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -61,9 +84,7 @@ getElenco()
       <Text style={styles.liked}>30k</Text>
 
       <Text style={styles.descriptionMovie}>
-        DESCUBRA A VERDADE. Em seu segundo ano de combate ao crime, Batman
-        descobre a corrupção em Gotham City que se conecta à sua própria família
-        enquanto enfrenta um serial killer conhecido como Charada.
+        {details.overview}
       </Text>
       <Text style={styles.elenco}>Elenco</Text>
 
@@ -80,8 +101,8 @@ getElenco()
                 uri: `https://image.tmdb.org/t/p/w780/cKNxg77ll8caX3LulREep4C24Vx.jpg`,
               }}
             />
-            <Text style={styles.name}>Felipe Mattos de Lima Valença</Text>
-            <Text style={styles.character}>nome do papel</Text>
+            <Text style={styles.name}>Luiza Moura</Text>
+            <Text style={styles.character}>BatGirl</Text>
           </View>
         )}
       />
