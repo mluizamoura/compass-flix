@@ -5,10 +5,12 @@ import Feather from 'react-native-vector-icons/Feather'
 import { NavigationHelpersContext } from '@react-navigation/native';
 import api from "../../service/api"
 
-export default function Movies({ navigation }) {
+export default function Movies({route, navigation}) {
+  const {item} = route.params
+
 
   const [elenco, setElenco] = useState([])
-  const [id, setId] = useState("414906")
+  const [id, setId] = useState(item.id)
   
   useEffect(() => {
     async function getElenco(){
@@ -22,11 +24,6 @@ export default function Movies({ navigation }) {
     }
 getElenco()
   }, [])
-
-
-  
-console.warn(elenco)
-  const testflatlist = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
   return (
     <View style={styles.container}>

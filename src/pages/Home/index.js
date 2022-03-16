@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import Loading from '../../components/Loading';
 
 export default function Home({navigation}) {
+  const itemSave = {}
   const [name, setName] = useState(false);
   const [movie, setMovie] = useState([]);
   const [page, setPage] = useState(1);
@@ -66,11 +67,13 @@ export default function Home({navigation}) {
   };
 
   const renderItem = ({item}) => {
+  
+  
     return (
       <TouchableOpacity
         style={styles.containerMovie}
         onPress={() => {
-          navigation.navigate('Movies');
+          navigation.navigate('Movies',{item});
         }}>
         <View style={styles.styleApiMovie}>
           <Image
