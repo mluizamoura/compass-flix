@@ -14,10 +14,9 @@ import styles from './styles'
 
 export default function Movies({ route, navigation }) {
   const { item } = route.params;
-  const testflatlist = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
   const [details, setDetails] = useState([]);
-  const [elenco, setElenco] = useState([]);
+  const [cast, setCast] = useState([]);
+  const [crew, setCrew] = useState(null);
   const [id, setId] = useState(item.id);
 
   useEffect(() => {
@@ -33,14 +32,15 @@ export default function Movies({ route, navigation }) {
     }
     getDetails();
   }, []);
-  console.warn(details.overview);
+  // console.warn(details.overview);
   useEffect(() => {
     async function getElenco() {
       try {
         const { data } = await api.get(
           `https://api.themoviedb.org/3/movie/${id}/credits?api_key=c3dc5cb91b1c309207a60a76c5742842&language=pt-BR`,
         );
-        setElenco(data.cast);
+        setCast(data.cast);
+        setCrew(data.crew);
       } catch (error) {
         console.warn(error);
       }
@@ -61,7 +61,6 @@ export default function Movies({ route, navigation }) {
         onPress={() => navigation.goBack()}>
         <AntDesign style={styles.buttonBack} name="arrowleft" size={25} />
       </TouchableOpacity>
-
       <TouchableOpacity style={styles.containerButtonStar}>
         <Feather name="star" size={25} style={styles.buttonStar} />
       </TouchableOpacity>
@@ -82,7 +81,11 @@ export default function Movies({ route, navigation }) {
           <Text style={styles.titleMovie}>{details.title} <Text style={styles.yearMovie}>{new Date(details.release_date).getFullYear()}</Text> <Text style={styles.timeMovie}>{details.runtime}min</Text>
           </Text>
           <View>
-            <Text style={styles.textAutor}>Direção por <Text style={styles.autorMovie}>Dirigido por......</Text>
+            <Text style={styles.textAutor}>Direção por <Text style={styles.autorMovie}>
+              {crew &&
+                crew.find(profile => {
+                  return profile.job === 'Director';
+                }).name}</Text>
             </Text>
           </View>
         </View>
@@ -111,10 +114,9 @@ export default function Movies({ route, navigation }) {
       </View>
 
       <Text style={styles.elenco}>Elenco</Text>
-
       <FlatList
         style={styles.viewFLatList}
-        data={elenco}
+        data={cast}
         keyExtractor={(item, index) => index}
         renderItem={({ item }) => (
           <View>
