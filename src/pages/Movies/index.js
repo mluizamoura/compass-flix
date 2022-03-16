@@ -53,7 +53,7 @@ export default function Movies({route, navigation}) {
       <Image
         style={styles.backGroundMovie}
         source={{
-          uri: 'http://image.tmdb.org/t/p/w780/cKNxg77ll8caX3LulREep4C24Vx.jpg',
+          uri: `http://image.tmdb.org/t/p/w780/${details.backdrop_path}`,
         }}
       />
       <TouchableOpacity
@@ -69,19 +69,19 @@ export default function Movies({route, navigation}) {
       <Image
         style={styles.capaMovie}
         source={{
-          uri: 'http://image.tmdb.org/t/p/w780/cKNxg77ll8caX3LulREep4C24Vx.jpg',
+          uri: `http://image.tmdb.org/t/p/w780/${details.poster_path}`,
         }}
       />
 
-      <Text style={styles.titleMovie}>The Batman 2022</Text>
-      <Text style={styles.yearMovie}>2022</Text>
-      <Text style={styles.timeMovie}>174min</Text>
+      <Text style={styles.titleMovie}>{details.original_title}</Text>
+      <Text style={styles.yearMovie}>{new Date(details.release_date).getFullYear()}</Text>
+      <Text style={styles.timeMovie}>{details.runtime}min</Text>
       <Text style={styles.autorMovie}>Direção por Matt Reeves</Text>
-      <Text style={styles.ratedMovie}>8.5/10</Text>
+      <Text style={styles.ratedMovie}>{details.vote_average}/10</Text>
       <TouchableOpacity>
         <AntDesign name="heart" size={22} style={styles.heartIcon} />
       </TouchableOpacity>
-      <Text style={styles.liked}>30k</Text>
+      <Text style={styles.liked}>{details.popularity}K</Text>
 
       <Text style={styles.descriptionMovie}>
         {details.overview}
@@ -90,7 +90,7 @@ export default function Movies({route, navigation}) {
 
       <FlatList
         style={styles.viewFLatList}
-        data={testflatlist}
+        data={elenco}
         keyExtractor={(item, index) => index}
         contentContainerStyle={{alignItems: 'center'}}
         renderItem={({item}) => (
@@ -98,11 +98,11 @@ export default function Movies({route, navigation}) {
             <Image
               style={styles.imageFlatList}
               source={{
-                uri: `https://image.tmdb.org/t/p/w780/cKNxg77ll8caX3LulREep4C24Vx.jpg`,
+                uri: `https://image.tmdb.org/t/p/w45/${item.profile_path}`,
               }}
             />
-            <Text style={styles.name}>Luiza Moura</Text>
-            <Text style={styles.character}>BatGirl</Text>
+            <Text style={styles.name}>{item.name}</Text>
+            <Text style={styles.character}>{item.character}</Text>
           </View>
         )}
       />
