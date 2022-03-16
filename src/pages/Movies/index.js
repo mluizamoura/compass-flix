@@ -5,8 +5,7 @@ import Feather from 'react-native-vector-icons/Feather'
 import { NavigationHelpersContext } from '@react-navigation/native';
 import api from "../../service/api"
 
-export default function Movies({ navigation }) {
-
+export default function Movies({ route, navigation }) {
   const [elenco, setElenco] = useState([])
   const [id, setId] = useState("414906")
   
