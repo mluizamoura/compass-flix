@@ -103,13 +103,14 @@ export default function Movies({ route, navigation }) {
         </View>
 
       </View>
-    
+
+      <View style={styles.detailsDescription}>
         <Text style={styles.descriptionMovie}>
           {details.overview}
         </Text>
-        <Text style={styles.elenco}>Elenco</Text>
-     
+      </View>
 
+      <Text style={styles.elenco}>Elenco</Text>
 
       <FlatList
         style={styles.viewFLatList}
@@ -132,4 +133,3 @@ export default function Movies({ route, navigation }) {
 
   );
 }
-

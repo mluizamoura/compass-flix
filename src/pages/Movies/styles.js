@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
 
     },
     capaMovie: {
-        position:'relative',
+        position: 'relative',
         top: -35,
         marginLeft: 20,
         width: 116,
@@ -93,19 +93,16 @@ const styles = StyleSheet.create({
         color: 'white',
         fontFamily: 'Open Sans',
 
-
     },
     textAutor: {
         marginLeft: 16,
         color: 'white',
         fontSize: 8,
-        marginTop: 2,
         fontFamily: 'Open Sans',
     },
 
     autorMovie: {
         fontFamily: 'Open Sans',
-        marginTop: 2,
         fontSize: 8,
         fontWeight: 'bold',
         color: '#FFFFFF',
@@ -128,13 +125,13 @@ const styles = StyleSheet.create({
     },
 
     detailsRated: {
-      
+
         width: 100,
         height: 50,
     },
 
     datailsLiked: {
-        
+
         marginLeft: 31,
         width: 50,
         height: 50,
@@ -152,28 +149,37 @@ const styles = StyleSheet.create({
         fontSize: 10,
     },
 
+    detailsDescription: {
+
+
+        width: 380,
+        flexWrap: 'wrap',
+        alignSelf: 'flex-start',
+        flexDirection: 'column',
+        marginLeft: 20,
+        marginTop: 25,
+    },
+
+
     descriptionMovie: {
+        textAlign: 'justify',
         color: '#FFFFFF',
         fontSize: 12,
-        width: 332,
-        height: 100,
-        alignSelf: 'flex-start',
-        marginTop: 25,
-        marginLeft: 20,
+        width: 380,
+        fontFamily: 'Open Sans'
     },
 
     elenco: {
-        paddingVertical: 4,
+        marginTop: 10,
+        marginLeft: 20,
+        paddingVertical: 3,
         textAlign: 'center',
-        marginTop: -20,
         borderColor: 'white',
         borderWidth: 1,
         borderRadius: 12,
-        marginLeft: 20,
         color: 'white',
         alignSelf: 'flex-start',
         width: 40,
-
         backgroundColor: '#9C4A8B',
         fontSize: 10,
         marginBottom: 5,
