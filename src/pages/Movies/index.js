@@ -17,7 +17,8 @@ export default function Movies({route, navigation}) {
   const testflatlist = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   const [details, setDetails] = useState([]);
-  const [elenco, setElenco] = useState([]);
+  const [cast, setCast] = useState([]);
+  const [crew, setCrew] = useState(null);
   const [id, setId] = useState(item.id);
 
   useEffect(() => {
@@ -33,14 +34,15 @@ export default function Movies({route, navigation}) {
     }
     getDetails();
   }, []);
-  console.warn(details.overview);
+  // console.warn(details.overview);
   useEffect(() => {
     async function getElenco() {
       try {
         const {data} = await api.get(
           `https://api.themoviedb.org/3/movie/${id}/credits?api_key=c3dc5cb91b1c309207a60a76c5742842&language=pt-BR`,
         );
-        setElenco(data.cast);
+        setCast(data.cast);
+        setCrew(data.crew);
       } catch (error) {
         console.warn(error);
       }
@@ -61,36 +63,37 @@ export default function Movies({route, navigation}) {
         onPress={() => navigation.goBack()}>
         <AntDesign style={styles.buttonBack} name="arrowleft" size={25} />
       </TouchableOpacity>
-
       <TouchableOpacity style={styles.containerButtonStar}>
         <Feather name="star" size={25} style={styles.buttonStar} />
       </TouchableOpacity>
-
       <Image
         style={styles.capaMovie}
         source={{
           uri: `http://image.tmdb.org/t/p/w780/${details.poster_path}`,
         }}
       />
-
       <Text style={styles.titleMovie}>{details.original_title}</Text>
-      <Text style={styles.yearMovie}>{new Date(details.release_date).getFullYear()}</Text>
+      <Text style={styles.yearMovie}>
+        {new Date(details.release_date).getFullYear()}
+      </Text>
       <Text style={styles.timeMovie}>{details.runtime}min</Text>
-      <Text style={styles.autorMovie}>Direção por Matt Reeves</Text>
+      <Text style={styles.autorMovie}>
+        Direção por{' '}
+        {crew &&
+          crew.find(profile => {
+            return profile.job === 'Director';
+          }).name}
+      </Text>
       <Text style={styles.ratedMovie}>{details.vote_average}/10</Text>
       <TouchableOpacity>
         <AntDesign name="heart" size={22} style={styles.heartIcon} />
       </TouchableOpacity>
       <Text style={styles.liked}>{details.popularity}K</Text>
-
-      <Text style={styles.descriptionMovie}>
-        {details.overview}
-      </Text>
+      <Text style={styles.descriptionMovie}>{details.overview}</Text>
       <Text style={styles.elenco}>Elenco</Text>
-
       <FlatList
         style={styles.viewFLatList}
-        data={elenco}
+        data={cast}
         keyExtractor={(item, index) => index}
         contentContainerStyle={{alignItems: 'center'}}
         renderItem={({item}) => (
