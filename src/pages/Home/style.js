@@ -30,6 +30,15 @@ const style = StyleSheet.create({
     fontFamily: 'open sans',
     fontWeight: '600',
   },
+  userImage:{
+    width:40,
+    height: 40,
+    borderRadius: 20,
+    bottom:150,
+    left:340,
+    
+   
+  },
   containerFlatList: {
     backgroundColor: '#000000',
   },
