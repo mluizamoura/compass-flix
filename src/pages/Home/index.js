@@ -42,10 +42,10 @@ export default function Home({navigation}) {
       
       if (account.name) {
         setName(account.name);
-        setIcon(account.avatar.tmdb.avatar_path === null? name[0] : account.avatar.tmdb.avatar_path)
+        setIcon(account.avatar.tmdb.avatar_path === null? name[0] + name[1]  : account.avatar.tmdb.avatar_path)
       } else {
         setName(account.username);
-        setIcon(account.avatar.tmdb.avatar_path === null? name[0] : account.avatar.tmdb.avatar_path)
+        setIcon(account.avatar.tmdb.avatar_path === null? name[0] + name[1] : account.avatar.tmdb.avatar_path)
       }
     }
     awaitUser();
@@ -64,9 +64,10 @@ export default function Home({navigation}) {
         </Text>
         <Text style={styles.textPopularMovies}>Filmes populares este mês</Text>
 
-        <View style={{backgroundColor:'blue', width:45,height:45,alignItems:'center', justifyContent:'center'}}>
-          <Text style={{color:'white', fontSize:40}}>{icon.length === 1? icon : ''}</Text>
-        <Image style={style.userImage}source={{
+        <View style={style.userImage}>
+        <Text style={{color:'black', fontSize:35}}>{icon === name[0]  + name[1] ? icon : ''}</Text>
+
+        <Image source={{
               uri: `http://image.tmdb.org/t/p/w45/${icon}`,
             }}/>
         </View>

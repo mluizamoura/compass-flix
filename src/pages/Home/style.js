@@ -15,11 +15,14 @@ const style = StyleSheet.create({
     fontFamily: 'open sans',
   },
   userImage:{
-    width: 40,
-    height:40,
-    borderRadius:20,
+    width: 50,
+    height:50,
+    borderRadius:25,
     bottom: 130,
-    left: 290
+    left: 330,
+    backgroundColor:"#ffffff",
+    alignItems:"center"
+    
   },
   greetingText__username: {
     color: '#E9A6A6',
