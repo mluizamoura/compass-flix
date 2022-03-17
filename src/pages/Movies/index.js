@@ -54,7 +54,7 @@ export default function Movies({route, navigation}) {
 
   const renderHeader = () => {
     return (
-      <>
+      <View>
         <Image
           style={styles.backGroundMovie}
           source={{
@@ -109,9 +109,7 @@ export default function Movies({route, navigation}) {
             <TouchableOpacity>
               <AntDesign name="heart" size={20} style={styles.heartIcon} />
             </TouchableOpacity>
-            <Text style={styles.liked}>
-              {Math.floor(details.popularity.toString())}K
-            </Text>
+            <Text style={styles.liked}>{Math.floor(details.popularity)}K</Text>
           </View>
         </View>
 
@@ -121,7 +119,7 @@ export default function Movies({route, navigation}) {
         <View style={styles.boxCast}>
           <Text style={styles.cast}>Elenco</Text>
         </View>
-      </>
+      </View>
     );
   };
   return (
