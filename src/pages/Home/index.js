@@ -65,7 +65,7 @@ export default function Home({navigation}) {
         <Text style={styles.textPopularMovies}>Filmes populares este mês</Text>
 
         <View style={{backgroundColor:'blue', width:45,height:45,alignItems:'center', justifyContent:'center'}}>
-          <Text style={{color:'white', fontSize:40}}>{icon.length === 1? icon : ''}</Text>
+          <Text style={{color:'white', fontSize:40}}>{icon === name[0]? icon : ''}</Text>
         <Image style={style.userImage}source={{
               uri: `http://image.tmdb.org/t/p/w45/${icon}`,
             }}/>
