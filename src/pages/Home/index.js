@@ -12,8 +12,8 @@ export default function Home({navigation}) {
   const [movie, setMovie] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [notify, setNotify] = useState([]);
-  const [icon, setIcon] = useState([]);
+  const [notify, setNotify] = useState(null);
+  const [icon, setIcon] = useState(null);
 
   async function awaitMovie() {
     if (loading) {
@@ -41,14 +41,19 @@ export default function Home({navigation}) {
         const account = await getAccountDetails(sessionId);
         if (account.name) {
           setName(account.name);
+          setIcon(
+            account.avatar.tmdb.avatar_path === null
+              ? account.name[0]
+              : account.avatar.tmdb.avatar_path,
+          );
         } else {
           setName(account.username);
+          setIcon(
+            account.avatar.tmdb.avatar_path === null
+              ? account.username[0]
+              : account.avatar.tmdb.avatar_path,
+          );
         }
-        setIcon(
-          account.avatar.tmdb.avatar_path === null
-            ? account.name[0]
-            : account.avatar.tmdb.avatar_path,
-        );
       } catch (error) {
         console.log(error);
       }
@@ -78,7 +83,7 @@ export default function Home({navigation}) {
           ) : (
             <View></View>
           )}
-          {icon.length === 1 ? (
+          {icon && icon.length === 1 ? (
             <Text style={style.userText}>{icon}</Text>
           ) : (
             <Image
