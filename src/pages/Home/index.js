@@ -39,13 +39,13 @@ export default function Home({navigation}) {
       const sessionId = await AsyncStorage.getItem('@CodeApi:session');
       const account = await getAccountDetails(sessionId);
       
-
+      
       if (account.name) {
         setName(account.name);
-        setIcon(account.avatar.tmdb.avatar_path === null? "pegouu" : name[0])
+        setIcon(account.avatar.tmdb.avatar_path === null? name[0] : account.avatar.tmdb.avatar_path)
       } else {
         setName(account.username);
-        setIcon(account.avatar.tmdb.avatar_path === null? "pegouu" : name[0])
+        setIcon(account.avatar.tmdb.avatar_path === null? name[0] : account.avatar.tmdb.avatar_path)
       }
     }
     awaitUser();
@@ -63,7 +63,10 @@ export default function Home({navigation}) {
           Reveja ou acompanhe os filmes que você assistiu...
         </Text>
         <Text style={styles.textPopularMovies}>Filmes populares este mês</Text>
-        <Image style={style.userImage}source={require('../Home/foto.png')}/>
+
+        <Image style={style.userImage}source={{
+              uri: `http://image.tmdb.org/t/p/w45/${icon}`,
+            }}/>
       </View>
       
     );

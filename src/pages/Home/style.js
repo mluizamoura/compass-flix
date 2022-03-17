@@ -14,6 +14,13 @@ const style = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'open sans',
   },
+  userImage:{
+    width: 40,
+    height:40,
+    borderRadius:20,
+    bottom: 130,
+    left: 290
+  },
   greetingText__username: {
     color: '#E9A6A6',
   },
@@ -29,15 +36,6 @@ const style = StyleSheet.create({
     fontSize: 10,
     fontFamily: 'open sans',
     fontWeight: '600',
-  },
-  userImage:{
-    width:40,
-    height: 40,
-    borderRadius: 20,
-    bottom:150,
-    left:340,
-    
-   
   },
   containerFlatList: {
     backgroundColor: '#000000',
