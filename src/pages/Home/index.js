@@ -23,7 +23,7 @@ export default function Home({navigation}) {
       setPage(page + 1);
       setLoading(false);
     } catch (error) {
-      console.warn(error);
+      console.log(error);
     }
   }
 
@@ -33,12 +33,16 @@ export default function Home({navigation}) {
 
   useEffect(() => {
     async function awaitUser() {
-      const sessionId = await AsyncStorage.getItem('@CodeApi:session');
-      const account = await getAccountDetails(sessionId);
-      if (account.name) {
-        setName(account.name);
-      } else {
-        setName(account.username);
+      try {
+        const sessionId = await AsyncStorage.getItem('@CodeApi:session');
+        const account = await getAccountDetails(sessionId);
+        if (account.name) {
+          setName(account.name);
+        } else {
+          setName(account.username);
+        }
+      } catch (error) {
+        console.log(error);
       }
     }
     awaitUser();

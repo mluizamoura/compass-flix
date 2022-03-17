@@ -32,27 +32,34 @@ export default function Login({navigation}) {
 
   useEffect(() => {
     async function awaitGetToken() {
-      const requestTolken = await getRequestToken();
-      setToken(requestTolken);
+      try {
+        const requestTolken = await getRequestToken();
+        setToken(requestTolken);
+      } catch (error) {
+        console.log(error);
+      }
     }
     awaitGetToken();
   }, []);
 
   async function isSucess(userFull) {
-    const isSuccessRequest = await validateToken(userFull);
-    const sessionId = await getIdAccessToken({request_token: token});
-    setIsSuccess(isSuccessRequest);
-    AsyncStorage.multiSet([
-      ['@CodeApi:username', username],
-      ['@CodeApi:token', token],
-      ['@CodeApi:session', sessionId],
-    ]);
-
-    if (isSuccessRequest) {
-      return navigation.reset({
-        index: 0,
-        routes: [{name: 'HomeTabScreen'}],
-      });
+    try {
+      const isSuccessRequest = await validateToken(userFull);
+      const sessionId = await getIdAccessToken({request_token: token});
+      setIsSuccess(isSuccessRequest);
+      AsyncStorage.multiSet([
+        ['@CodeApi:username', username],
+        ['@CodeApi:token', token],
+        ['@CodeApi:session', sessionId],
+      ]);
+      if (isSuccessRequest) {
+        return navigation.reset({
+          index: 0,
+          routes: [{name: 'HomeTabScreen'}],
+        });
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -103,9 +110,7 @@ export default function Login({navigation}) {
             Keyboard.dismiss();
             isSucess(user);
           }}>
-          <Text style={{fontSize: 14, fontWeight: 'bold', color: '#1F1D36'}}>
-            Entrar
-          </Text>
+          <Text style={styles.btnSubmit.text}>Entrar</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>

@@ -12,7 +12,7 @@ export async function getMovie(page) {
     );
     return data.results;
   } catch (error) {
-    console.warn(error);
+    console.log(error);
   }
 }
 
@@ -23,7 +23,7 @@ export async function getRequestToken() {
     );
     return data.request_token;
   } catch (error) {
-    console.warn('getRequestToken');
+    console.log('getRequestToken');
   }
 }
 

@@ -57,11 +57,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#E9A6A6',
     borderRadius: 35,
     alignItems: 'center',
-    height: 35,
-    width: 95,
     justifyContent: 'center',
     alignSelf: 'center',
-    marginBottom: 20,
+    text: {
+      paddingVertical: 8,
+      paddingHorizontal: 24,
+      fontSize: 14,
+      fontWeight: 'bold',
+      color: '#1F1D36',
+    },
   },
 });
 
