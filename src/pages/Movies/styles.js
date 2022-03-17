@@ -138,19 +138,19 @@ const styles = StyleSheet.create({
   },
 
   detailsDescription: {
-    width: 380,
-    flexWrap: 'wrap',
-    alignSelf: 'flex-start',
+    width: '100%',
     flexDirection: 'column',
-    marginLeft: 20,
     marginTop: 25,
+    alignItems:'center',
+    paddingHorizontal: 5
+    
   },
 
   descriptionMovie: {
     textAlign: 'justify',
     color: '#FFFFFF',
     fontSize: 12,
-    width: 380,
+    width: "90%",
     fontFamily: 'Open Sans',
   },
 
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderRadius:12,
     color: 'white',
-    marginLeft: 20,
+    marginLeft: 26,
     width: 40,
     fontSize: 10,
     marginBottom: 0,

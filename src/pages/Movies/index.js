@@ -39,7 +39,7 @@ export default function Movies({route, navigation}) {
 
   const renderItem = ({item}) => {
     return (
-      <View style={{marginTop: 10}}>
+      <View style={{marginTop: 10,marginLeft:5}}>
         <Image
           style={styles.imageFlatList}
           source={{
