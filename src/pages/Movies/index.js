@@ -39,7 +39,7 @@ export default function Movies({route, navigation}) {
 
   const renderItem = ({item}) => {
     return (
-      <View>
+      <View style={{marginTop: 10}}>
         <Image
           style={styles.imageFlatList}
           source={{
@@ -110,7 +110,7 @@ export default function Movies({route, navigation}) {
               <AntDesign name="heart" size={20} style={styles.heartIcon} />
             </TouchableOpacity>
             <Text style={styles.liked}>
-              {details.length > 0 && details.popularity.toFixed(2)}K
+              {details.length > 0 && details.popularity[0]+details.popularity[1]}K
             </Text>
           </View>
         </View>
@@ -118,7 +118,9 @@ export default function Movies({route, navigation}) {
         <View style={styles.detailsDescription}>
           <Text style={styles.descriptionMovie}>{details.overview}</Text>
         </View>
-        <Text style={styles.elenco}>Elenco</Text>
+        <View style={styles.boxCast}>
+          <Text style={styles.cast}>Elenco</Text>
+        </View>
       </>
     );
   };

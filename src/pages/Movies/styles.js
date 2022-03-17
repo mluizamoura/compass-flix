@@ -154,9 +154,21 @@ const styles = StyleSheet.create({
     fontFamily: 'Open Sans',
   },
 
-  elenco: {
+  boxCast:{
     marginTop: 10,
+    borderColor: '#9C4A8B',
+    borderBottomWidth: 1,
+    borderRadius:12,
+    color: 'white',
     marginLeft: 20,
+    width: 40,
+    fontSize: 10,
+    marginBottom: 0,
+  },
+
+  cast: {
+  
+    
     paddingVertical: 3,
     textAlign: 'center',
     borderColor: 'white',
@@ -187,7 +199,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     marginLeft: 70,
-    marginTop: -40,
+    marginTop: -35,
   },
 
   character: {
