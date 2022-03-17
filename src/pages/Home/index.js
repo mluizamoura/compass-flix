@@ -1,16 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, Image, FlatList, TouchableOpacity} from 'react-native';
-import {getMovie, getAccountDetails} from '../../service/api';
+import {getMovie, getAccountDetails, getChangeMovies} from '../../service/api';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './style';
 import AsyncStorage from '@react-native-community/async-storage';
 import Loading from '../../components/Loading';
+import style from './style';
 
 export default function Home({navigation}) {
   const [name, setName] = useState(false);
   const [movie, setMovie] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [notify, setNotify] = useState([]);
+  const [icon, setIcon] = useState([]);
 
   async function awaitMovie() {
     if (loading) {
@@ -44,7 +47,17 @@ export default function Home({navigation}) {
       } catch (error) {
         console.log(error);
       }
+      setIcon(
+        account.avatar.tmdb.avatar_path === null
+          ? account.name[0]
+          : account.avatar.tmdb.avatar_path,
+      );
     }
+    async function awaitChange() {
+      const newMovies = await getChangeMovies(new Date());
+      setNotify(newMovies.results);
+    }
+    awaitChange();
     awaitUser();
   }, []);
 
@@ -58,6 +71,24 @@ export default function Home({navigation}) {
           Reveja ou acompanhe os filmes que você assistiu...
         </Text>
         <Text style={styles.textPopularMovies}>Filmes populares este mês</Text>
+
+        <View style={style.containerNotify}>
+          {notify && notify.length > 0 ? (
+            <View style={style.notifyActive}></View>
+          ) : (
+            <View></View>
+          )}
+          {icon.length === 1 ? (
+            <Text style={style.userText}>{icon}</Text>
+          ) : (
+            <Image
+              style={style.userImage}
+              source={{
+                uri: `http://image.tmdb.org/t/p/w45/${icon}`,
+              }}
+            />
+          )}
+        </View>
       </View>
     );
   };
@@ -74,7 +105,7 @@ export default function Home({navigation}) {
       <TouchableOpacity
         style={styles.containerMovie}
         onPress={() => {
-          navigation.navigate('Movies');
+          navigation.navigate('Movies', item.id);
         }}>
         <View style={styles.styleApiMovie}>
           <Image
