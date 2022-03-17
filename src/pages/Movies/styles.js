@@ -141,34 +141,30 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'column',
     marginTop: 25,
-    alignItems:'center',
-    paddingHorizontal: 5
-    
+    alignItems: 'center',
+    paddingHorizontal: 5,
   },
 
   descriptionMovie: {
     textAlign: 'justify',
     color: '#FFFFFF',
     fontSize: 12,
-    width: "90%",
+    width: '90%',
     fontFamily: 'Open Sans',
   },
 
-  boxCast:{
+  boxCast: {
     marginTop: 10,
     borderColor: '#9C4A8B',
     borderBottomWidth: 1,
-    borderRadius:12,
+    borderRadius: 12,
     color: 'white',
     marginLeft: 26,
     width: 40,
     fontSize: 10,
     marginBottom: 0,
   },
-
   cast: {
-  
-    
     paddingVertical: 3,
     textAlign: 'center',
     borderColor: 'white',
@@ -181,15 +177,25 @@ const styles = StyleSheet.create({
     fontSize: 10,
     marginBottom: 5,
   },
-
+  containerProfileImg: {
+    width: 35,
+    height: 35,
+    backgroundColor: 'lightslategrey',
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  userText: {
+    fontSize: 25,
+    fontWeight: '600',
+    color: 'white',
+  },
   viewFLatList: {
     backgroundColor: 'black',
     width: 400,
   },
 
   imageFlatList: {
-    marginLeft: 20,
-    marginTop: 10,
     width: 35,
     height: 35,
     borderRadius: 50,

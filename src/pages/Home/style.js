@@ -7,6 +7,9 @@ const style = StyleSheet.create({
     paddingHorizontal: 14,
     backgroundColor: '#000000',
   },
+  boxHeader: {
+    marginHorizontal: 5,
+  },
   greetingText: {
     color: '#FFFFFF',
     marginTop: '15%',
@@ -17,7 +20,7 @@ const style = StyleSheet.create({
   containerNotify: {
     position: 'absolute',
     top: 16,
-    right: 19,
+    right: 0,
     width: 50,
     height: 50,
     backgroundColor: 'lightslategrey',

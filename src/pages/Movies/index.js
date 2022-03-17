@@ -40,12 +40,18 @@ export default function Movies({route, navigation}) {
   const renderItem = ({item}) => {
     return (
       <View style={{marginTop: 10, marginLeft: 5}}>
-        <Image
-          style={styles.imageFlatList}
-          source={{
-            uri: `https://image.tmdb.org/t/p/w45/${item.profile_path}`,
-          }}
-        />
+        <View style={styles.containerProfileImg}>
+          {item.profile_path === null ? (
+            <Text style={styles.userText}>{item.name[0]}</Text>
+          ) : (
+            <Image
+              style={styles.imageFlatList}
+              source={{
+                uri: `https://image.tmdb.org/t/p/w45/${item.profile_path}`,
+              }}
+            />
+          )}
+        </View>
         <Text style={styles.name}>{item.name}</Text>
         <Text style={styles.character}>{item.character}</Text>
       </View>
