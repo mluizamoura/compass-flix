@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './style';
 import AsyncStorage from '@react-native-community/async-storage';
 import Loading from '../../components/Loading';
+import style from './style';
 
 export default function Home({navigation}) {
   const itemSave = {};
@@ -62,7 +63,9 @@ export default function Home({navigation}) {
           Reveja ou acompanhe os filmes que você assistiu...
         </Text>
         <Text style={styles.textPopularMovies}>Filmes populares este mês</Text>
+        <Image style={style.userImage}source={require('../Home/foto.png')}/>
       </View>
+      
     );
   };
 
