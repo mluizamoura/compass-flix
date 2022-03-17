@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import Loading from '../../components/Loading';
 
 export default function Home({navigation}) {
-  const itemSave = {}
+  const itemSave = {};
   const [name, setName] = useState(false);
   const [movie, setMovie] = useState([]);
   const [page, setPage] = useState(1);
@@ -36,6 +36,7 @@ export default function Home({navigation}) {
     async function awaitUser() {
       const sessionId = await AsyncStorage.getItem('@CodeApi:session');
       const account = await getAccountDetails(sessionId);
+      console.warn(account);
       if (account.name) {
         setName(account.name);
       } else {
@@ -67,13 +68,11 @@ export default function Home({navigation}) {
   };
 
   const renderItem = ({item}) => {
-  
-  
     return (
       <TouchableOpacity
         style={styles.containerMovie}
         onPress={() => {
-          navigation.navigate('Movies',{item});
+          navigation.navigate('Movies', {item});
         }}>
         <View style={styles.styleApiMovie}>
           <Image

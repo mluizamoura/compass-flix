@@ -16,6 +16,28 @@ export async function getMovie(page) {
   }
 }
 
+export async function getDetails(id) {
+  try {
+    const {data} = await api.get(
+      `movie/${id}?api_key=c3dc5cb91b1c309207a60a76c5742842&language=pt-BR`,
+    );
+    return data;
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
+export async function getCredits(id) {
+  try {
+    const {data} = await api.get(
+      `movie/${id}/credits?api_key=c3dc5cb91b1c309207a60a76c5742842&language=pt-BR`,
+    );
+    return data;
+  } catch (error) {
+    console.warn(error);
+  }
+}
+
 export async function getRequestToken() {
   try {
     const {data} = await api.get(
