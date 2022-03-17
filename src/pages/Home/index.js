@@ -44,14 +44,14 @@ export default function Home({navigation}) {
         } else {
           setName(account.username);
         }
+        setIcon(
+          account.avatar.tmdb.avatar_path === null
+            ? account.name[0]
+            : account.avatar.tmdb.avatar_path,
+        );
       } catch (error) {
         console.log(error);
       }
-      setIcon(
-        account.avatar.tmdb.avatar_path === null
-          ? account.name[0]
-          : account.avatar.tmdb.avatar_path,
-      );
     }
     async function awaitChange() {
       const newMovies = await getChangeMovies(new Date());
