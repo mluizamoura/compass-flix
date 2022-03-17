@@ -110,7 +110,7 @@ export default function Movies({route, navigation}) {
               <AntDesign name="heart" size={20} style={styles.heartIcon} />
             </TouchableOpacity>
             <Text style={styles.liked}>
-              {details.length > 0 && details.popularity.toFixed(2)}K
+              {details.length > 0 && details.popularity.toString()[0]+details.popularity[1]}K
             </Text>
           </View>
         </View>

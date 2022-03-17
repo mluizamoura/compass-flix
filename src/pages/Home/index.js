@@ -26,7 +26,7 @@ export default function Home({navigation}) {
       setPage(page + 1);
       setLoading(false);
     } catch (error) {
-      console.warn(error);
+      console.log(error);
     }
   }
 
@@ -38,7 +38,6 @@ export default function Home({navigation}) {
     async function awaitUser() {
       const sessionId = await AsyncStorage.getItem('@CodeApi:session');
       const account = await getAccountDetails(sessionId);
-      console.warn(account);
       if (account.name) {
         setName(account.name);
       } else {
@@ -70,8 +69,7 @@ export default function Home({navigation}) {
         <Text style={styles.textPopularMovies}>Filmes populares este mês</Text>
 
         <View style={style.containerNotify}>
-          {console.warn(notify)}
-          {notify.length > 0 ? (
+          {notify && notify.length > 0 ? (
             <View style={style.notifyActive}></View>
           ) : (
             <View></View>
