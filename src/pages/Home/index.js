@@ -64,7 +64,7 @@ export default function Home({navigation}) {
         <Text style={styles.textPopularMovies}>Filmes populares este mês</Text>
 
         <View style={style.containerNotify}>
-          {typeof icon === 'string' ? (
+          {icon.length === 1 ? (
             <Text style={style.userText}>{icon}</Text>
           ) : (
             <Image
