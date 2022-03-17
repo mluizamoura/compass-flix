@@ -12,6 +12,7 @@ export default function Home({navigation}) {
   const [movie, setMovie] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [icon,setIcon] = useState()
 
   async function awaitMovie() {
     if (loading) {
@@ -36,15 +37,20 @@ export default function Home({navigation}) {
     async function awaitUser() {
       const sessionId = await AsyncStorage.getItem('@CodeApi:session');
       const account = await getAccountDetails(sessionId);
-      console.warn(account);
+      
+
       if (account.name) {
         setName(account.name);
+        setIcon(account.avatar.tmdb.avatar_path === null? "pegouu" : name[0])
       } else {
         setName(account.username);
+        setIcon(account.avatar.tmdb.avatar_path === null? "pegouu" : name[0])
       }
     }
     awaitUser();
   }, []);
+
+  console.warn(icon);
 
   const renderHeader = () => {
     return (
