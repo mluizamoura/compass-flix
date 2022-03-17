@@ -138,25 +138,37 @@ const styles = StyleSheet.create({
   },
 
   detailsDescription: {
-    width: 380,
-    flexWrap: 'wrap',
-    alignSelf: 'flex-start',
+    width: '100%',
     flexDirection: 'column',
-    marginLeft: 20,
     marginTop: 25,
+    alignItems:'center',
+    paddingHorizontal: 5
+    
   },
 
   descriptionMovie: {
     textAlign: 'justify',
     color: '#FFFFFF',
     fontSize: 12,
-    width: 380,
+    width: "90%",
     fontFamily: 'Open Sans',
   },
 
-  elenco: {
+  boxCast:{
     marginTop: 10,
-    marginLeft: 20,
+    borderColor: '#9C4A8B',
+    borderBottomWidth: 1,
+    borderRadius:12,
+    color: 'white',
+    marginLeft: 26,
+    width: 40,
+    fontSize: 10,
+    marginBottom: 0,
+  },
+
+  cast: {
+  
+    
     paddingVertical: 3,
     textAlign: 'center',
     borderColor: 'white',
@@ -187,7 +199,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     marginLeft: 70,
-    marginTop: -40,
+    marginTop: -35,
   },
 
   character: {

@@ -39,7 +39,7 @@ export default function Movies({route, navigation}) {
 
   const renderItem = ({item}) => {
     return (
-      <View>
+      <View style={{marginTop: 10,marginLeft:5}}>
         <Image
           style={styles.imageFlatList}
           source={{
@@ -118,7 +118,9 @@ export default function Movies({route, navigation}) {
         <View style={styles.detailsDescription}>
           <Text style={styles.descriptionMovie}>{details.overview}</Text>
         </View>
-        <Text style={styles.elenco}>Elenco</Text>
+        <View style={styles.boxCast}>
+          <Text style={styles.cast}>Elenco</Text>
+        </View>
       </>
     );
   };
