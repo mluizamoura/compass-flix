@@ -6,14 +6,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 39,
     height: 39,
-    backgroundColor: '#E9A6A6',
     padding: 8,
     borderRadius: 80,
   },
   icon: {
-    color: '#fff',
+    color: "rgba(255, 255, 255, 0.5)",
     fontSize: 24,
   },
 });
 
 export default styles;
+
