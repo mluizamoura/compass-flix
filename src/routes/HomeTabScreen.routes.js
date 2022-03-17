@@ -6,7 +6,6 @@ import ButtonHome from '../components/ButtonHome';
 import ButtonPlay from '../components/ButtonPlay';
 import ButtonUser from '../components/ButtonUser';
 
-
 const Tab = createBottomTabNavigator();
 
 function HomeTabScreen() {
@@ -19,6 +18,7 @@ function HomeTabScreen() {
         tabBarShowLabel: false,
         tabBarStyle: {
           backgroundColor: '#454545',
+          borderTopColor: 'transparent',
           height: 54,
         },
       }}>
@@ -43,7 +43,6 @@ function HomeTabScreen() {
           tabBarIcon: () => <ButtonUser name="User" />,
         }}
       />
-
     </Tab.Navigator>
   );
 }

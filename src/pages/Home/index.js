@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, Image, FlatList, TouchableOpacity} from 'react-native';
-import {getMovie, getAccountDetails} from '../../service/api';
+import {getMovie, getAccountDetails, getChangeMovies} from '../../service/api';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './style';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -8,12 +8,16 @@ import Loading from '../../components/Loading';
 import style from './style';
 
 export default function Home({navigation}) {
-  const itemSave = {};
   const [name, setName] = useState(false);
   const [movie, setMovie] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+<<<<<<< HEAD
   const [icon, setIcon] = useState();
+=======
+  const [notify, setNotify] = useState([]);
+  const [icon, setIcon] = useState([]);
+>>>>>>> 06dd10ae13b5abbbbe5c58f8e8a7bfe402db1e77
 
   async function awaitMovie() {
     if (loading) {
@@ -38,6 +42,7 @@ export default function Home({navigation}) {
     async function awaitUser() {
       const sessionId = await AsyncStorage.getItem('@CodeApi:session');
       const account = await getAccountDetails(sessionId);
+<<<<<<< HEAD
 
       if (account.name) {
         setName(account.name);
@@ -53,12 +58,27 @@ export default function Home({navigation}) {
             ? name[0]
             : account.avatar.tmdb.avatar_path,
         );
+=======
+      console.warn(account);
+      if (account.name) {
+        setName(account.name);
+      } else {
+        setName(account.username);
+>>>>>>> 06dd10ae13b5abbbbe5c58f8e8a7bfe402db1e77
       }
+      setIcon(
+        account.avatar.tmdb.avatar_path === null
+          ? account.name[0]
+          : account.avatar.tmdb.avatar_path,
+      );
     }
+    async function awaitChange() {
+      const newMovies = await getChangeMovies(new Date());
+      setNotify(newMovies.results);
+    }
+    awaitChange();
     awaitUser();
   }, []);
-
-  console.warn(icon);
 
   const renderHeader = () => {
     return (
@@ -71,6 +91,7 @@ export default function Home({navigation}) {
         </Text>
         <Text style={styles.textPopularMovies}>Filmes populares este mês</Text>
 
+<<<<<<< HEAD
         <View>
           <Image
             style={style.userImage}
@@ -78,6 +99,25 @@ export default function Home({navigation}) {
               uri: `http://image.tmdb.org/t/p/w45/${icon && icon}`,
             }}
           />
+=======
+        <View style={style.containerNotify}>
+          {console.warn(notify)}
+          {notify.length > 0 ? (
+            <View style={style.notifyActive}></View>
+          ) : (
+            <View></View>
+          )}
+          {icon.length === 1 ? (
+            <Text style={style.userText}>{icon}</Text>
+          ) : (
+            <Image
+              style={style.userImage}
+              source={{
+                uri: `http://image.tmdb.org/t/p/w45/${icon}`,
+              }}
+            />
+          )}
+>>>>>>> 06dd10ae13b5abbbbe5c58f8e8a7bfe402db1e77
         </View>
       </View>
     );

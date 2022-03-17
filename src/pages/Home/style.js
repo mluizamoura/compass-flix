@@ -14,8 +14,12 @@ const style = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'open sans',
   },
-  userImage:{
+  containerNotify: {
+    position: 'absolute',
+    top: 16,
+    right: 19,
     width: 50,
+<<<<<<< HEAD
     height:50,
     borderRadius:25,
     bottom: 130,
@@ -24,6 +28,33 @@ const style = StyleSheet.create({
     alignItems:"center",
     
     
+=======
+    height: 50,
+    backgroundColor: 'lightslategrey',
+    borderRadius: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  notifyActive: {
+    position: 'absolute',
+    zIndex: 2,
+    top: 0,
+    right: 0,
+    width: 12,
+    height: 12,
+    backgroundColor: 'red',
+    borderRadius: 6,
+  },
+  userText: {
+    fontSize: 25,
+    fontWeight: '600',
+    color: 'white',
+  },
+  userImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+>>>>>>> 06dd10ae13b5abbbbe5c58f8e8a7bfe402db1e77
   },
   greetingText__username: {
     color: '#E9A6A6',
