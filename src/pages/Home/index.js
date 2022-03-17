@@ -72,7 +72,7 @@ export default function Home({navigation}) {
       <TouchableOpacity
         style={styles.containerMovie}
         onPress={() => {
-          navigation.navigate('Movies', {item});
+          navigation.navigate('Movies', item.id);
         }}>
         <View style={styles.styleApiMovie}>
           <Image

@@ -7,11 +7,10 @@ import api, {getCredits, getDetails} from '../../service/api';
 import styles from './styles';
 
 export default function Movies({route, navigation}) {
-  const {item} = route.params;
+  const id = route.params;
   const [details, setDetails] = useState([]);
   const [cast, setCast] = useState([]);
   const [crew, setCrew] = useState(null);
-  const [id, setId] = useState(item.id);
 
   useEffect(() => {
     async function awaitGetDetails() {
@@ -23,7 +22,7 @@ export default function Movies({route, navigation}) {
       }
     }
     awaitGetDetails();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     async function awaitGetCredits() {
@@ -36,7 +35,7 @@ export default function Movies({route, navigation}) {
       }
     }
     awaitGetCredits();
-  }, []);
+  }, [id]);
 
   const renderItem = ({item}) => {
     return (
