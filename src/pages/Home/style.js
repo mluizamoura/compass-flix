@@ -19,9 +19,10 @@ const style = StyleSheet.create({
     height:50,
     borderRadius:25,
     bottom: 130,
-    left: 330,
+    left: 250,
     backgroundColor:"#ffffff",
-    alignItems:"center"
+    alignItems:"center",
+    
     
   },
   greetingText__username: {

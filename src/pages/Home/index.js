@@ -13,7 +13,7 @@ export default function Home({navigation}) {
   const [movie, setMovie] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [icon,setIcon] = useState()
+  const [icon, setIcon] = useState();
 
   async function awaitMovie() {
     if (loading) {
@@ -38,14 +38,21 @@ export default function Home({navigation}) {
     async function awaitUser() {
       const sessionId = await AsyncStorage.getItem('@CodeApi:session');
       const account = await getAccountDetails(sessionId);
-      
-      
+
       if (account.name) {
         setName(account.name);
-        setIcon(account.avatar.tmdb.avatar_path === null? name[0] + name[1]  : account.avatar.tmdb.avatar_path)
+        setIcon(
+          account.avatar.tmdb.avatar_path === null
+            ? name[0]
+            : account.avatar.tmdb.avatar_path,
+        );
       } else {
         setName(account.username);
-        setIcon(account.avatar.tmdb.avatar_path === null? name[0] + name[1] : account.avatar.tmdb.avatar_path)
+        setIcon(
+          account.avatar.tmdb.avatar_path === null
+            ? name[0]
+            : account.avatar.tmdb.avatar_path,
+        );
       }
     }
     awaitUser();
@@ -64,16 +71,15 @@ export default function Home({navigation}) {
         </Text>
         <Text style={styles.textPopularMovies}>Filmes populares este mês</Text>
 
-        <View style={style.userImage}>
-        <Text style={{color:'black', fontSize:35}}>{icon === name[0]  + name[1] ? icon : ''}</Text>
-
-        <Image source={{
-              uri: `http://image.tmdb.org/t/p/w45/${icon}`,
-            }}/>
+        <View>
+          <Image
+            style={style.userImage}
+            source={{
+              uri: `http://image.tmdb.org/t/p/w45/${icon && icon}`,
+            }}
+          />
         </View>
-        
       </View>
-      
     );
   };
 
