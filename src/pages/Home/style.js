@@ -14,14 +14,26 @@ const style = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'open sans',
   },
-  userImage:{
+  containerNotify: {
+    position: 'absolute',
+    top: 16,
+    right: 19,
     width: 50,
-    height:50,
-    borderRadius:25,
-    bottom: 130,
-    left: 330,
-    alignItems:"center"
-    
+    height: 50,
+    backgroundColor: 'lightslategrey',
+    borderRadius: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  userText: {
+    fontSize: 25,
+    fontWeight: '600',
+    color: 'white',
+  },
+  userImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
   },
   greetingText__username: {
     color: '#E9A6A6',

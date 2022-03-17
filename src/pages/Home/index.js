@@ -8,12 +8,11 @@ import Loading from '../../components/Loading';
 import style from './style';
 
 export default function Home({navigation}) {
-  const itemSave = {};
   const [name, setName] = useState(false);
   const [movie, setMovie] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [icon,setIcon] = useState()
+  const [icon, setIcon] = useState([]);
 
   async function awaitMovie() {
     if (loading) {
@@ -38,20 +37,20 @@ export default function Home({navigation}) {
     async function awaitUser() {
       const sessionId = await AsyncStorage.getItem('@CodeApi:session');
       const account = await getAccountDetails(sessionId);
-      
-      
+      console.warn(account);
       if (account.name) {
         setName(account.name);
-        setIcon(account.avatar.tmdb.avatar_path === null? name[0] : account.avatar.tmdb.avatar_path)
       } else {
         setName(account.username);
-        setIcon(account.avatar.tmdb.avatar_path === null? name[0] : account.avatar.tmdb.avatar_path)
       }
+      setIcon(
+        account.avatar.tmdb.avatar_path === null
+          ? account.name[0]
+          : account.avatar.tmdb.avatar_path,
+      );
     }
     awaitUser();
   }, []);
-
-  console.warn(icon);
 
   const renderHeader = () => {
     return (
@@ -64,15 +63,19 @@ export default function Home({navigation}) {
         </Text>
         <Text style={styles.textPopularMovies}>Filmes populares este mês</Text>
 
-        <View>
-
-        <Image style={style.userImage} source={{
-              uri: `http://image.tmdb.org/t/p/w45/${icon}`,
-            }}/>
+        <View style={style.containerNotify}>
+          {typeof icon === 'string' ? (
+            <Text style={style.userText}>{icon}</Text>
+          ) : (
+            <Image
+              style={style.userImage}
+              source={{
+                uri: `http://image.tmdb.org/t/p/w45/${icon}`,
+              }}
+            />
+          )}
         </View>
-        
       </View>
-      
     );
   };
 
