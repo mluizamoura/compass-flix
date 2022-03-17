@@ -19,16 +19,6 @@ const style = StyleSheet.create({
     top: 16,
     right: 19,
     width: 50,
-<<<<<<< HEAD
-    height:50,
-    borderRadius:25,
-    bottom: 130,
-    left: 250,
-    backgroundColor:"#ffffff",
-    alignItems:"center",
-    
-    
-=======
     height: 50,
     backgroundColor: 'lightslategrey',
     borderRadius: 25,
@@ -54,7 +44,6 @@ const style = StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 25,
->>>>>>> 06dd10ae13b5abbbbe5c58f8e8a7bfe402db1e77
   },
   greetingText__username: {
     color: '#E9A6A6',

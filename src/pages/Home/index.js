@@ -12,12 +12,8 @@ export default function Home({navigation}) {
   const [movie, setMovie] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-<<<<<<< HEAD
-  const [icon, setIcon] = useState();
-=======
   const [notify, setNotify] = useState([]);
   const [icon, setIcon] = useState([]);
->>>>>>> 06dd10ae13b5abbbbe5c58f8e8a7bfe402db1e77
 
   async function awaitMovie() {
     if (loading) {
@@ -42,29 +38,11 @@ export default function Home({navigation}) {
     async function awaitUser() {
       const sessionId = await AsyncStorage.getItem('@CodeApi:session');
       const account = await getAccountDetails(sessionId);
-<<<<<<< HEAD
-
-      if (account.name) {
-        setName(account.name);
-        setIcon(
-          account.avatar.tmdb.avatar_path === null
-            ? name[0]
-            : account.avatar.tmdb.avatar_path,
-        );
-      } else {
-        setName(account.username);
-        setIcon(
-          account.avatar.tmdb.avatar_path === null
-            ? name[0]
-            : account.avatar.tmdb.avatar_path,
-        );
-=======
       console.warn(account);
       if (account.name) {
         setName(account.name);
       } else {
         setName(account.username);
->>>>>>> 06dd10ae13b5abbbbe5c58f8e8a7bfe402db1e77
       }
       setIcon(
         account.avatar.tmdb.avatar_path === null
@@ -91,15 +69,6 @@ export default function Home({navigation}) {
         </Text>
         <Text style={styles.textPopularMovies}>Filmes populares este mês</Text>
 
-<<<<<<< HEAD
-        <View>
-          <Image
-            style={style.userImage}
-            source={{
-              uri: `http://image.tmdb.org/t/p/w45/${icon && icon}`,
-            }}
-          />
-=======
         <View style={style.containerNotify}>
           {console.warn(notify)}
           {notify.length > 0 ? (
@@ -117,7 +86,6 @@ export default function Home({navigation}) {
               }}
             />
           )}
->>>>>>> 06dd10ae13b5abbbbe5c58f8e8a7bfe402db1e77
         </View>
       </View>
     );
