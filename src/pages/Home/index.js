@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, Image, FlatList, TouchableOpacity} from 'react-native';
-import {getMovie, getAccountDetails} from '../../service/api';
+import {getMovie, getAccountDetails, getChangeMovies} from '../../service/api';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import styles from './style';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -12,6 +12,7 @@ export default function Home({navigation}) {
   const [movie, setMovie] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [notify, setNotify] = useState([]);
   const [icon, setIcon] = useState([]);
 
   async function awaitMovie() {
@@ -49,6 +50,11 @@ export default function Home({navigation}) {
           : account.avatar.tmdb.avatar_path,
       );
     }
+    async function awaitChange() {
+      const newMovies = await getChangeMovies(new Date());
+      setNotify(newMovies.results);
+    }
+    awaitChange();
     awaitUser();
   }, []);
 
@@ -64,6 +70,12 @@ export default function Home({navigation}) {
         <Text style={styles.textPopularMovies}>Filmes populares este mês</Text>
 
         <View style={style.containerNotify}>
+          {console.warn(notify)}
+          {notify.length > 0 ? (
+            <View style={style.notifyActive}></View>
+          ) : (
+            <View></View>
+          )}
           {icon.length === 1 ? (
             <Text style={style.userText}>{icon}</Text>
           ) : (

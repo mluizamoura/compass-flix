@@ -25,6 +25,16 @@ const style = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  notifyActive: {
+    position: 'absolute',
+    zIndex: 2,
+    top: 0,
+    right: 0,
+    width: 12,
+    height: 12,
+    backgroundColor: 'red',
+    borderRadius: 6,
+  },
   userText: {
     fontSize: 25,
     fontWeight: '600',

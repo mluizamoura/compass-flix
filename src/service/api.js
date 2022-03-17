@@ -111,4 +111,15 @@ export async function getAccountDetails(seesionId) {
   }
 }
 
+export async function getChangeMovies(dateStart) {
+  try {
+    const {data} = await api.get(
+      `movie/changes?api_key=c3dc5cb91b1c309207a60a76c5742842&start_date=${dateStart}&page=1`,
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export default api;
