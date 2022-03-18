@@ -2,14 +2,14 @@ import {View, Text, TouchableOpacity, Image, FlatList} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Feather from 'react-native-vector-icons/Feather';
-import {NavigationHelpersContext} from '@react-navigation/native';
-import api, {getCredits, getDetails} from '../../service/api';
+import {getCredits, getDetails} from '../../service/api';
 import styles from './styles';
+import Loading from '../../components/Loading';
 
 export default function Movies({route, navigation}) {
   const id = route.params;
   const [details, setDetails] = useState([]);
-  const [cast, setCast] = useState([]);
+  const [cast, setCast] = useState(null);
   const [crew, setCrew] = useState(null);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function Movies({route, navigation}) {
 
   const renderItem = ({item}) => {
     return (
-      <View style={{marginTop: 10, marginLeft: 5}}>
+      <View style={styles.containerCast}>
         <View style={styles.containerProfileImg}>
           {item.profile_path === null ? (
             <Text style={styles.userText}>{item.name[0]}</Text>
@@ -52,8 +52,10 @@ export default function Movies({route, navigation}) {
             />
           )}
         </View>
-        <Text style={styles.name}>{item.name}</Text>
-        <Text style={styles.character}>{item.character}</Text>
+        <View style={styles.containerProfileText}>
+          <Text style={styles.name}>{item.name}</Text>
+          <Text style={styles.character}>{item.character}</Text>
+        </View>
       </View>
     );
   };
@@ -92,7 +94,7 @@ export default function Movies({route, navigation}) {
               <Text style={styles.yearMovie}>
                 {new Date(details.release_date).getFullYear()}
               </Text>{' '}
-              <Text style={styles.timeMovie}>{details.runtime}min</Text>
+              <Text style={styles.timeMovie}>{details.runtime} min</Text>
             </Text>
             <View>
               <Text style={styles.textAutor}>
@@ -112,9 +114,9 @@ export default function Movies({route, navigation}) {
           </View>
 
           <View style={styles.datailsLiked}>
-            <TouchableOpacity>
+            <View>
               <AntDesign name="heart" size={20} style={styles.heartIcon} />
-            </TouchableOpacity>
+            </View>
             <Text style={styles.liked}>{Math.floor(details.popularity)}K</Text>
           </View>
         </View>
@@ -124,19 +126,24 @@ export default function Movies({route, navigation}) {
         </View>
         <View style={styles.boxCast}>
           <Text style={styles.cast}>Elenco</Text>
+          <View style={styles.line}></View>
         </View>
       </View>
     );
   };
   return (
     <View style={styles.container}>
-      <FlatList
-        style={styles.viewFLatList}
-        data={cast}
-        keyExtractor={(item, index) => index}
-        renderItem={renderItem}
-        ListHeaderComponent={renderHeader}
-      />
+      {cast ? (
+        <FlatList
+          style={styles.viewFLatList}
+          data={cast}
+          keyExtractor={(item, index) => index}
+          renderItem={renderItem}
+          ListHeaderComponent={renderHeader}
+        />
+      ) : (
+        <Loading />
+      )}
     </View>
   );
 }
