@@ -41,7 +41,7 @@ const style = StyleSheet.create({
   userText: {
     fontSize: 25,
     fontWeight: '600',
-    color: 'white',
+    color: '#ddd',
   },
   userImage: {
     width: 50,
